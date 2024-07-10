@@ -1,0 +1,123 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load herbsTags %} 
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/showTovar.css' %}" type="text/css">
+
+<body>
+    <div class="main_group_list">
+        <div class="head_panel">
+            <div class="group_list_breadcrumb">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        {% for f in group %}
+                        {% if f.slug == slug %}
+                        <li class="breadcrumb-item"><a href="{% url 'home' %}">Main page</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'group' f.category.slug %}">{{f.category}}</a></li>
+                        <li class="breadcrumb-item active" style="color: rgb(187, 187, 187);" aria-current="page">{{f}}</li>
+                        {% endif %}
+                        {% endfor %}
+                    </ol>
+                </nav>
+            </div>
+            <div class="dropdown">
+                <p class="sort_by">Sort by:</p>
+                <button class="btn btn-secondary dropdown-toggle custom-dropdown-color" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {% if request.GET.order_by == "time_create" %}New listings
+                {% elif  request.GET.order_by == "price" %}Lowest price
+                {% elif  request.GET.order_by == "-price" %}Highest price
+                {% else %}Best results
+                {% endif %}
+                </button>
+                <form action="{% url "priceList" slug %}" method="get" class="dropdown-menu">
+                    <div class="form-check custom_style">
+                        <input class="form-check-input custom_check_input" type="radio" name="order_by" id="flexRadioDefault1" value="id" {% if request.GET.order_by == "id" %}checked{% endif %}>
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Default
+                        </label>
+                    </div>
+                    <div class="form-check custom_style">
+                        <input class="form-check-input custom_check_input" type="radio" name="order_by" id="flexRadioDefault2" value="-time_create" {% if request.GET.order_by == "-time_create" %}checked{% endif %}>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            New listings first
+                        </label>
+                    </div>
+                    <div class="form-check custom_style">
+                        <input class="form-check-input custom_check_input" type="radio" name="order_by" id="flexRadioDefault2" value="price" {% if request.GET.order_by == "price" %}checked{% endif %}>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Lowest price
+                        </label>
+                    </div>
+                    <div class="form-check custom_style">
+                        <input class="form-check-input custom_check_input" type="radio" name="order_by" id="flexRadioDefault2" value="-price" {% if request.GET.order_by == "-price" %}checked{% endif %}>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Highest price
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary mx-3 mt-3">Enter</button>
+                </form>
+            </div>
+        </div>
+        <div class="tovar_platz">
+            {% for t in page_obj %}
+            {% if t.group.slug == slug %}
+            <a class="a_group_cart" href="{% url 'tovar' t.slug %}">
+                <div class="tovarCart">
+                    <img class="tovarCartImg" src="{{t.photo.url}}">
+                    <div class="infoTovar">
+                        <h5 style="color: white;">{{t}}</h5>
+                        <p>{{t.content|linebreaks|truncatewords:6}}</p>
+                        <ul class="price">
+                            <li style="color: white;"><b>{{t.price}} €</b></li>
+                        </ul>
+                    </div>
+                    <div class="but_buy">
+                        <a class="button_buy_in_click" href="#">buy in click</a>
+                        <a class="button_buy_korb add-to-cart" href="{% url "cart_add" %}" data-product-id="{{ t.id }}">
+                            {% csrf_token %}
+                            <img class="add_in_korb" src="{% static 'images/korb_add.png' %}">
+                        </a>
+                    </div>
+                </div>
+            </a>
+            {% endif %}
+            {% endfor %}
+            
+        </div>
+        <div class="pagination_block">
+            <ul class="pag">
+
+                <li {% if page_obj.has_previous %}
+                    class="previousPage">
+                    <a href="?{% change_params page=page_obj.previous_page_number %}">
+                    {% else %}
+                    class="disabled"><a>
+                    {% endif %}
+                    Previous</a>
+                </li>
+
+                {% for page in page_obj.paginator.page_range %}
+                {% if page >= page_obj.number|add:-2 and page <= page_obj.number|add:2 %}
+                    <li id="number{% if page_obj.number == page %}active{% endif %}">
+                        <a href="?{% change_params page=page %}">{{page}}</a>
+                    </li>
+                {% endif %}
+                {% endfor %}
+
+                <li {% if page_obj.has_next %}
+                    class="nextPage">
+                    <a href="?{% change_params page=page_obj.next_page_number %}">
+                    {% else %}
+                    class="disabled">
+                    {% endif %}
+                    Next</a>
+                </li>
+            </ul>
+        </div>
+        
+    </div>
+
+</body>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/groupPage.css' %}" type="text/css">
+
+    <div class="main_group">
+        
+        <div class="row group_platz">
+            {% for f in group %}
+            {% if f.category.slug == slug %}
+            <div class="row group_cart">
+                <div class="col image_group">
+                    <a href="{% url 'priceList' f.slug %}"><img class="img-article-left thumb" src="{{f.photo.url}}"></a>
+                </div>
+                <div class="col text_group">
+                    <a href="{% url 'priceList' f.slug %}">
+                        <p class="card-title">{{f}}</p>
+                    </a>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+
+        </div>
+    </div>
+
+
+{% endblock %}

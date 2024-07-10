@@ -1,0 +1,199 @@
+{% extends "index.html" %}
+{% load static %}
+{% load carts_tags %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class=" bg-white p-4 mb-4 mx-2 rounded custom-shadow">
+                        <h3 class="text-center mb-4">Профиль пользователя</h3>
+                        <form action="{% url "profile" %}" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-12 mb-3 text-center">
+                                    {% if user.image %}
+                                        <img src="{{user.image.url}}"
+                                            alt="Аватар пользователя" class="img-fluid rounded-circle"
+                                            style="max-width: 150px;">
+                                    {% else %}
+                                    <img src="../deps/images/baseavatar.jpg"
+                                        alt="Аватар пользователя" class="img-fluid rounded-circle"
+                                        style="max-width: 150px;">
+                                    {% endif %}
+                                    <input type="file" class="form-control mt-3" id="id_image"
+                                        name="image"
+                                        accept="image/*">
+                                        {% if form.image.errors %}
+                                            <div class="alert alert-danger alert-dismissible fade show">{{form.image.errors}}</div>
+                                        {% endif %}
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="countryDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Choose a country or region
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="countryDropdown">
+                                        {% get_land_and_number as lands_numbers %} 
+                                        {% for lands_object in lands_numbers %}
+                                            <li><a class="dropdown-item country-select" href="#" data-phone-code="{{ lands_object.number_code }}">{{ lands_object.land }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                    <input type="hidden" class="form-control" id="id_country_or_region" value="" name="country_or_region" required>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="id_first_name" class="form-label">First name:</label>
+                                    <input type="text" class="form-control" id="id_first_name"
+                                        value="{{form.first_name.value}}"
+                                        name ="first_name"
+                                        placeholder="Enter first name" required>
+                                        {% if form.first_name.errors %}
+                                            <div class="alert alert-danger alert-dismissible fade show">{{form.first_name.errors}}</div>
+                                        {% endif %}
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="id_last_name" class="form-label">Last name:</label>
+                                    <input type="text" class="form-control" id="id_last_name"
+                                        value="{{form.last_name.value}}"
+                                        name ="last_name"
+                                        placeholder="Enter last name" required>
+                                        {% if form.last_name.errors %}
+                                        <div class="alert alert-danger alert-dismissible fade show">{{form.last_name.errors}}</div>
+                                        {% endif %}
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="id_username" class="form-label">Username:</label>
+                                    <input type="text" class="form-control" id="id_username"
+                                        value="{{form.username.value}}"
+                                        name ="username"
+                                        placeholder="Enter nickname" required>
+                                        {% if form.username.errors %}
+                                        <div class="alert alert-danger alert-dismissible fade show">{{form.username.errors}}</div>
+                                        {% endif %}
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="id_street_and_house_number" class="form-label">Street and house number:</label>
+                                    <input type="street_and_house_number" class="form-control" id="id_street_and_house_number"
+                                        value="{{form.street_and_house_number.value}}"
+                                        name ="street_and_house_number"
+                                        placeholder="Street and house number" required>
+                                        {% if form.street_and_house_number.errors %}
+                                        <div class="alert alert-danger alert-dismissible fade show">{{form.street_and_house_number.errors}}</div>
+                                        {% endif %}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="id_postcode" class="form-label">Postcode:</label>
+                                    <input type="text" class="form-control" id="id_postcode"
+                                        value="{% if form.postcode.value %}{{form.postcode.value}}{% endif %}"
+                                        name="postcode" required>
+                                    {% if form.postcode.errors %}
+                                        <div class="alert alert-danger alert-dismissible fade show">{{form.postcode.errors}}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="id_location" class="form-label">Location:</label>
+                                    <input type="text" class="form-control" id="id_location" name="location" 
+                                    value="{% if form.location.value %}{{form.location.value}}{% endif %}"
+                                    required>
+                                    {% if form.location.errors %}
+                                        <div class="alert alert-danger alert-dismissible fade show">{{form.location.errors}}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="id_email" class="form-label">Email:</label>
+                                    <input type="email" class="form-control" id="id_email"
+                                        value="{{form.email.value}}"
+                                        name ="email"
+                                        placeholder="Enter email" required>
+                                        {% if form.email.errors %}
+                                        <div class="alert alert-danger alert-dismissible fade show">{{form.email.errors}}</div>
+                                        {% endif %}
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-dark">Save</button>
+                        </form>
+                        <button onclick="location.href='{% url "logout" %}'" class="btn btn-dark">Exit</button>
+                    </div>
+                </div>
+                <!-- Корзина -->
+                <div class="col-md-7">
+                    <div class=" bg-white p-4 mb-4 mx-2 rounded custom-shadow">
+                        <h3 class="text-center mb-4">Корзина</h3>
+                        <div class="container" id="cart-items-container">
+                            <!-- Разметка корзины -->
+                            {% include "carts/includes/included_cart.html" %}
+                            <!-- Закончилась разметка корзины -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Оформленные заказы -->
+                <div class="col-md-12">
+                    <div class=" bg-white p-4 mb-4 mx-2 rounded custom-shadow">
+                        <h3 class="text-center mb-4">Мои заказы</h3>
+                        <!-- Разметка заказов -->
+                        <div class="container">
+                            <div class="accordion" id="accordionExample">
+                                {% for order in orders %}
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="heading{{ order.id }}">
+                                            <button class="accordion-button {% if order != orders.0 %}collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ order.id }}" aria-expanded="false" aria-controls="collapse{{ order.id }}">
+                                                Заказ № {{ order.id }} - {{ order.created_timestamp }} | Статус:<strong class="mx-2">{{order.status}}</strong>
+                                            </button>
+                                        </h2>
+                                        <div id="collapse{{ order.id }}" class="accordion-collapse collapse {% if order == orders.0 %} show {% endif %}" aria-labelledby="heading{{ order.id }}" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <table class="table table-dark table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Product</th>
+                                                            <th>Quantity</th>
+                                                            <th>Price</th>
+                                                            <th>Total cost</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {% for item in order.orderitem_set.all %}
+                                                        <tr>
+                                                            <td><a class="text-white" href="{% url 'tovar' item.product.slug %}">{{item.product.title}}</a></td>
+                                                            <td>{{item.quantity}}</td>
+                                                            <td>{{item.price}}</td>
+                                                            <td>{{item.products_price}}</td>
+                                                            
+                                                        </tr>
+                                                        {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {%endfor%}
+                                </div>
+                            </div>
+                                
+                        </div>
+                        <!-- Закончилась разметка заказов -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.country-select').forEach(function(item) {
+                item.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    var countryRegion = this.textContent.trim();
+                    var phoneCode = this.getAttribute('data-phone-code');
+    
+                    // Устанавливаем выбранную страну в текст кнопки дропдауна
+                    document.getElementById('countryDropdown').textContent = countryRegion;
+                    console.log(countryRegion)
+    
+                    // Устанавливаем значение в скрытое поле формы для отправки на сервер
+                    document.getElementById('id_country_or_region').value = countryRegion;
+                });
+            });
+        });
+    </script>
+{% endblock %}

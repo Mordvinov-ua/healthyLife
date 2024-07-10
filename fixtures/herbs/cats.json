@@ -1,0 +1,68 @@
+[
+    {
+        "model": "herbs.category",
+        "pk": 1,
+        "fields": {
+            "name": "Pharmacy",
+            "time_create": "2023-11-18T15:58:19.572Z",
+            "time_update": "2024-02-29T15:05:14.674Z",
+            "is_published": true,
+            "slug": "pharmacy"
+        }
+    },
+    {
+        "model": "herbs.category",
+        "pk": 2,
+        "fields": {
+            "name": "Herbs",
+            "time_create": "2023-11-18T16:24:01.027Z",
+            "time_update": "2024-02-29T15:05:34.045Z",
+            "is_published": true,
+            "slug": "herbs"
+        }
+    },
+    {
+        "model": "herbs.category",
+        "pk": 3,
+        "fields": {
+            "name": "Honey",
+            "time_create": "2023-11-18T17:34:21.806Z",
+            "time_update": "2024-02-29T15:05:54.968Z",
+            "is_published": true,
+            "slug": "honey"
+        }
+    },
+    {
+        "model": "herbs.category",
+        "pk": 4,
+        "fields": {
+            "name": "Books",
+            "time_create": "2023-11-18T18:22:53.802Z",
+            "time_update": "2024-02-29T15:04:29.034Z",
+            "is_published": true,
+            "slug": "books"
+        }
+    },
+    {
+        "model": "herbs.category",
+        "pk": 5,
+        "fields": {
+            "name": "Natural cosmetics",
+            "time_create": "2023-11-18T18:23:17.939Z",
+            "time_update": "2024-02-29T15:03:52.999Z",
+            "is_published": true,
+            "slug": "natural-cosmetics"
+        }
+    },
+    {
+        "model": "herbs.category",
+        "pk": 6,
+        "fields": {
+            "name": "Tinctures",
+            "time_create": "2024-02-29T15:06:26.253Z",
+            "time_update": "2024-02-29T15:06:26.253Z",
+            "is_published": true,
+            "slug": "tinctures"
+        }
+    }
+]

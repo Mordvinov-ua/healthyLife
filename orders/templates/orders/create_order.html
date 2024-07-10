@@ -1,0 +1,172 @@
+{% extends "index.html" %}
+{% load static %}
+{% load carts_tags %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/create_order.css' %}" type="text/css">
+
+<div class="bg-white p-4 mb-4 mx-2 rounded custom-shadow">
+    <div class="container">
+        <h3 class="text-center mb-4">Выбранные товары</h3>
+        <div class="container" id="cart-items-container">
+            {% user_carts request as carts %}
+            {% include "carts/includes/included_cart.html" %}
+        </div>
+    </div>
+    <!-- Детали заказа -->
+    <div class="container">
+        <h3 class="text-center">Детали заказа</h3>
+        <div class="card mb-3">
+            <div class="card-body">
+                <form action="{% url "create_order" %}" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <!-- Вывод ошибок формы -->
+                        {% if form.errors %}
+                            <div class="alert alert-danger">
+                                <ul>
+                                    {% for field, errors in form.errors.items %}
+                                        <li>{{ field }}: {{ errors }}</li>
+                                    {% endfor %}
+                                    {% for error in form.non_field_errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="countryDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                Choose a country or region
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="countryDropdown">
+                                {% get_land_and_number as lands_numbers %} 
+                                {% for lands_object in lands_numbers %}
+                                    <li><a class="dropdown-item country-select" href="#" data-phone-code="{{ lands_object.number_code }}">{{ lands_object.land }}</a></li>
+                                {% endfor %}
+                            </ul>
+                            <input type="hidden" class="form-control" id="id_country_or_region" value="" name="country_or_region" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="id_first_name" class="form-label">Name:</label>
+                            <input type="text" class="form-control" id="id_first_name"
+                                value="{% if form.first_name.value %}{{form.first_name.value}}{% endif %}"
+                                name="first_name" required>
+                            {% if form.first_name.errors %}
+                                <div class="alert alert-danger alert-dismissible fade show">{{form.first_name.errors}}</div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="id_last_name" class="form-label">Lastname:</label>
+                            <input type="text" class="form-control" id="id_last_name" name="last_name" 
+                            value="{% if form.last_name.value %}{{form.last_name.value}}{% endif %}"
+                            required>
+                            {% if form.last_name.errors %}
+                                <div class="alert alert-danger alert-dismissible fade show">{{form.last_name.errors}}</div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="id_phone_number" class="form-label">Phone number*:</label>
+                            <div class="phone_number_div">
+                                <input type="text" class="form-control phone_code" id="id_phone_code" name="phone_code"
+                                value=""
+                                placeholder=""
+                                required>
+                            <input type="text" class="form-control" id="id_phone_number" name="phone_number"
+                                value="{% if form.phone_number.value %}{{form.phone_number.value}}{% endif %}" required>
+                            {% if form.phone_number.errors %}
+                                <div class="alert alert-danger alert-dismissible fade show">{{form.phone_number.errors}}</div>
+                            {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="id_street_and_house_number" class="form-label">Street and house number:</label>
+                            <input type="text" class="form-control" id="id_street_and_house_number"
+                                value="{% if form.street_and_house_number.value %}{{form.street_and_house_number.value}}{% endif %}"
+                                name="street_and_house_number" required>
+                            {% if form.street_and_house_number.errors %}
+                                <div class="alert alert-danger alert-dismissible fade show">{{form.street_and_house_number.errors}}</div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="id_postcode" class="form-label">Postcode:</label>
+                            <input type="text" class="form-control" id="id_postcode"
+                                value="{% if form.postcode.value %}{{form.postcode.value}}{% endif %}"
+                                name="postcode" required>
+                            {% if form.postcode.errors %}
+                                <div class="alert alert-danger alert-dismissible fade show">{{form.postcode.errors}}</div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="id_location" class="form-label">Location:</label>
+                            <input type="text" class="form-control" id="id_location" name="location" 
+                            value="{% if form.location.value %}{{form.location.value}}{% endif %}"
+                            required>
+                            {% if form.location.errors %}
+                                <div class="alert alert-danger alert-dismissible fade show">{{form.location.errors}}</div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="id_e_mail" class="form-label">E-mail:</label>
+                            <input type="text" class="form-control" id="id_e_mail" name="e_mail" 
+                            value="{% if form.e_mail.value %}{{form.e_mail.value}}{% endif %}"
+                            required>
+                            {% if form.e_mail.errors %}
+                                <div class="alert alert-danger alert-dismissible fade show">{{form.e_mail.errors}}</div>
+                            {% endif %}
+                        </div>
+                        </div>
+                    </div>
+                    {% if user.is_authenticated %}
+                        <button type="submit" class="btn btn-dark">Place an order</button>
+                    {% else %}
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Place an order
+                      </button>
+                      
+                      <!-- Modal -->
+                      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="exampleModalLabel">Purchase without registrarion</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              Are you sure you want to place an order without registration?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-dark">Place an order</button>
+                                <a class="btn btn-dark" href="{% url 'login' %}">Personal Area</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.country-select').forEach(function(item) {
+            item.addEventListener('click', function(event) {
+                event.preventDefault();
+                var countryRegion = this.textContent.trim();
+                var phoneCode = this.getAttribute('data-phone-code');
+
+                // Устанавливаем выбранную страну в текст кнопки дропдауна
+                document.getElementById('countryDropdown').textContent = countryRegion;
+                console.log(countryRegion)
+
+                // Устанавливаем значение в скрытое поле формы для отправки на сервер
+                document.getElementById('id_country_or_region').value = countryRegion;
+
+                // Устанавливаем телефонный код в поле формы
+                document.getElementById('id_phone_code').value = phoneCode;
+            });
+        });
+    });
+</script>
+{% endblock %}

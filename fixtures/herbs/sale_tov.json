@@ -1,0 +1,50 @@
+[
+    {
+        "model": "herbs.sale_tovar",
+        "pk": 1,
+        "fields": {
+            "title": "Heilkräuter",
+            "content": "Heilkräuter Potentilla alba 1kg BIO UKRAINE",
+            "photo": "photo/tovar/Heilkräuter.png",
+            "alt_price": "104.39",
+            "neu_price": "99.09",
+            "time_create": "2023-11-19T15:45:13.010Z",
+            "time_update": "2023-11-19T15:45:13.010Z",
+            "is_published": true,
+            "sale_category": 1,
+            "slug": "heilkrauter"
+        }
+    },
+    {
+        "model": "herbs.sale_tovar",
+        "pk": 2,
+        "fields": {
+            "title": "Herrenstärke",
+            "content": "Natürliche Tinktur der Herrenstärke 250 ml Bio Ukraine",
+            "photo": "photo/tovar/Herrenstärke.png",
+            "alt_price": "52.46",
+            "neu_price": "47.00",
+            "time_create": "2023-11-19T15:47:53.102Z",
+            "time_update": "2023-11-19T15:47:53.102Z",
+            "is_published": true,
+            "sale_category": 2,
+            "slug": "herrenstarke"
+        }
+    },
+    {
+        "model": "herbs.sale_tovar",
+        "pk": 3,
+        "fields": {
+            "title": "Propolis Tropfen",
+            "content": "Natürlicher Wasserextrakt aus Propolis Tropfen 15ml 🙂 UKRAINE ECO",
+            "photo": "photo/tovar/tropfen.jpg",
+            "alt_price": "35.31",
+            "neu_price": "30.00",
+            "time_create": "2023-11-19T15:50:17.012Z",
+            "time_update": "2023-11-19T15:50:17.012Z",
+            "is_published": true,
+            "sale_category": 3,
+            "slug": "propolis-tropfen"
+        }
+    }
+]

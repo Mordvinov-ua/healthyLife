@@ -1,0 +1,148 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/mainPage.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/showTovar.css' %}" type="text/css">
+
+<div class="videofon">
+  <video src="{% static 'video/video.mp4' %}" type="video/mp4" autoplay muted loop></video>
+  
+  <div class="video_text">
+    <h1>7 years on the market</h1>
+    <p>We have extensive experience in growing
+      Realization and distribution of all videos
+      planting material</p>
+    <h1>Selected planting material</h1>
+    <p>We only work with the best
+      proven over the years, nurseries
+      from Ukraine</p>
+    <h1>Quality control</h1>
+    <p>All planting material passes the control of seed and quarantine state inspections</p>
+  </div>
+</div>
+
+<div class="o_nas">
+  <div class="about_cart">
+    <div class="about_img">
+      <a href="#"><img class="img-article-left thumb" src="{% static 'images/dostavka.svg' %}"></a>
+    </div>
+    <div class="about_text">
+      <a href="#">
+        <h2 class="about-title">Fast delivery</h2>
+      </a>
+      <a href="#">
+        <p>anywhere in the world</p>
+      </a>
+    </div>
+  </div>
+  <div class="about_cart">
+    <div class="about_img">
+      <a href="#"><img class="img-article-left thumb" src="{% static 'images/zakaz.svg' %}"></a>
+    </div>
+    <div class="about_text">
+      <a href="#">
+        <h2 class="about-title">Checkout</h2>
+      </a>
+      <a href="#">
+        <p>without registering</p>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="karusel_sale">
+
+  <ul class="nav nav-tabs nav_sale">
+    <a id="salenav"></a>
+    {% for i in sale_cat %}
+    {% if value == i.pk %}
+    <li class="nav-item" style="background-color: rgb(84, 121, 40);">
+      <a class="nav-link active" id="active_sale" aria-current="page" href="{{i.get_absolute_url}}#salenav">{{i}}</a>
+    </li>
+    {% else %}
+    <li class="nav-item">
+      <a class="nav-link link_sale" href="{{i.get_absolute_url}}#salenav">{{i}}</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+
+  </ul>
+
+  <div id="carouselExampleIndicators" style="background-color:  rgb(84, 121, 40);" class="carousel slide">
+
+    <div class="carousel-inner">
+      <div class="carousel-item active" style="margin-left: 100px; display: flex;">
+        {% for i in page_obj %}
+        {% if i.sale_category.pk == value %}
+
+
+        <div class="carousel-indicators" style="margin-left: 0;">
+          {% for page in page_obj.paginator.page_range %}
+
+          {% if page_obj.number == page %}
+          <button type="button" data-bs-target="#carouselExampleIndicators" href="?page={{page}}#salenav" class="active"
+            aria-current="true" aria-label="Slide {{page}}"></button>
+          {% else %}
+          <a type="button" data-bs-target="#carouselExampleIndicators" href="?page={{page}}#salenav"
+            aria-label="Slide {{page}}"></a>
+          {% endif %}
+
+          {% endfor %}
+        </div>
+        <a class="a_group_cart" href="{% url 'tovar' i.slug %}">
+          <div class="tovarCart">
+            <img class="tovarCartImg" src="{{i.photo.url}}">
+            <div class="infoTovar">
+              <h5 style="color: white;">{{i}}</h5>
+              <p>{{i.content|linebreaks|truncatewords:5}}</p>
+              <ul class="price">
+                {% if i.sale_category.pk == 3 %}
+                <li style="color: white;"><s>{{i.alt_price}}€</s></li>
+                <li style="color: rgb(207, 6, 6);"><b>{{i.neu_price}}€</b></li>
+                {% else %}
+                <li></li>
+                <li style="color: white;"><b>{{i.alt_price}}€</b></li>
+                {% endif %}
+              </ul>
+            </div>
+            <div class="but_buy">
+              <a class="button_buy_in_click" href="#">buy in click</a>
+                        <a class="button_buy_korb add-to-cart" href="{% url "cart_add" %}" data-product-id="{{ i.id }}">
+                            {% csrf_token %}
+                            <img class="add_in_korb" src="{% static 'images/korb_add.png' %}">
+                        </a>
+            </div>
+          </div>
+        </a>
+        {% endif %}
+        {% endfor %}
+
+
+
+
+      </div>
+      {% if page_obj.has_previous %}
+      <a class="carousel-control-prev" style="width: 60px;" type="button" data-bs-target="#carouselExampleIndicators"
+        href="?page={{ page_obj.previous_page_number }}#salenav">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </a>
+      {% endif %}
+      {% if page_obj.has_next %}
+      <a class="carousel-control-next" style="width: 60px;" type="button" data-bs-target="#carouselExampleIndicators"
+        href="?page={{ page_obj.next_page_number }}#salenav">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </a>
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
+
+

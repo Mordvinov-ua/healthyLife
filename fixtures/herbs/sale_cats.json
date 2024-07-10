@@ -1,0 +1,35 @@
+[
+    {
+        "model": "herbs.sale_category",
+        "pk": 1,
+        "fields": {
+            "name": "Bestsellers",
+            "time_create": "2023-11-19T15:14:29.643Z",
+            "time_update": "2023-11-19T15:14:29.644Z",
+            "is_published": true,
+            "slug": "bestsellers"
+        }
+    },
+    {
+        "model": "herbs.sale_category",
+        "pk": 2,
+        "fields": {
+            "name": "New",
+            "time_create": "2023-11-19T15:15:07.638Z",
+            "time_update": "2023-11-19T15:15:07.638Z",
+            "is_published": true,
+            "slug": "new"
+        }
+    },
+    {
+        "model": "herbs.sale_category",
+        "pk": 3,
+        "fields": {
+            "name": "Sale",
+            "time_create": "2023-11-19T15:15:16.111Z",
+            "time_update": "2023-11-19T15:15:16.111Z",
+            "is_published": true,
+            "slug": "sale"
+        }
+    }
+]

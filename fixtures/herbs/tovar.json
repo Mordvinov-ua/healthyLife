@@ -1,0 +1,182 @@
+[
+    {
+        "model": "herbs.tovar",
+        "pk": 2,
+        "fields": {
+            "title": "Citramon",
+            "content": "Citramon - Darnytsia is an analgesic and antipyretic that provides analgesic, antipyretic and antipyretic effects.  Indicated for the treatment of mild or mild pain syndrome with headache or toothache, primary dysmenorrhea, migraine, arthralgia, neuralgia, illnesses that are accompanied by hyperthermia of various etiologies",
+            "photo": "photo/tovar/tsitramon-darnitsa-tabl-6-darnitsa-chao-farm-firma-list-250x250-2c66.jpg",
+            "price": "1.00",
+            "time_create": "2024-03-05T15:07:35.724Z",
+            "time_update": "2024-03-16T09:44:46.940Z",
+            "is_published": true,
+            "group": 2,
+            "slug": "citramon"
+        }
+    },
+    {
+        "model": "herbs.tovar",
+        "pk": 3,
+        "fields": {
+            "title": "Citramon-Darnitsa tablets 10 pcs",
+            "content": "Citramon - Darnytsia is an analgesic and antipyretic that can provide analgesic, antipyretic and antipyretic effects.  Indicated for the treatment of mild or mild pain syndrome with headache or toothache, primary dysmenorrhea, migraine, arthralgia, neuralgia, illnesses that are accompanied by hyperthermia of various etiologies",
+            "photo": "photo/tovar/tsitramon-darnitsa-tabl-10-darnitsa-chao-farm-firma-prod-400x400-8265.jpg",
+            "price": "2.00",
+            "time_create": "2024-03-05T18:24:56.771Z",
+            "time_update": "2024-03-16T09:44:55.373Z",
+            "is_published": true,
+            "group": 2,
+            "slug": "citramon-darnitsa-tablets-10-pcs"
+        }
+    },
+    {
+        "model": "herbs.tovar",
+        "pk": 4,
+        "fields": {
+            "title": "Analgin-Darnytsia tablets of 500 mg, 10 pcs",
+            "content": "Analgin - Darnytsia is an analgesic and antipyretic.  Indications for use - pain syndrome of various origins: headache, toothache, neuralgia, radiculitis, pain in muscles, joints, pain during menstruation.  As an auxiliary means for reducing pain after surgical and diagnostic interventions.  Hyperthermic syndrome in infectious and inflammatory diseases.",
+            "photo": "photo/tovar/analgin-darnitsa-tabl-500mg-10-darnitsa-chao-farm-firma-prod-400x400-d8af.jpg",
+            "price": "1.00",
+            "time_create": "2024-03-05T18:38:40.356Z",
+            "time_update": "2024-03-16T09:45:03.083Z",
+            "is_published": true,
+            "group": 2,
+            "slug": "analgin-darnytsia-tablets-of-500-mg-10-pcs"
+        }
+    },
+    {
+        "model": "herbs.tovar",
+        "pk": 5,
+        "fields": {
+            "title": "Paracetamol-Darnytsia tablets of 500 mg, blister of 10 pcs",
+            "content": "Headache, including migraine and tension headache, toothache, back pain, rheumatic pain, muscle pain, periodic pain in women, moderate arthritic pain;  relieving the symptoms of fever and pain in colds and flu.",
+            "photo": "photo/tovar/paratsetamol-darnitsa-tabl-500mg-10-darnitsa-chao-farm-firma-prod-400x400-211e.jpg",
+            "price": "1.00",
+            "time_create": "2024-03-05T18:41:07.123Z",
+            "time_update": "2024-03-05T18:41:07.123Z",
+            "is_published": true,
+            "group": 2,
+            "slug": "paracetamol-darnytsia-tablets-of-500-mg-blister-of-10-pcs"
+        }
+    },
+    {
+        "model": "herbs.tovar",
+        "pk": 6,
+        "fields": {
+            "title": "Evkazolin Aqua nasal spray 1 mg/g bottle 10 ml",
+            "content": "Symptomatychne likuvannya zakladenosti nosa pry HRVI, sinnu lykhomanku, alerhichnykh rynitakh, synusytakh.\r\n\r\nDlya polehshennya vidtoku sekretu pry zakhvoryuvannyakh prydatkovykh pazukh nosa.\r\n\r\nDopomizhna terapiya serednʹoho otytu (dlya zmenshennya nabryaku slyzovoyi obolonky porozhnyny nosa).\r\n\r\nPry diahnostychnykh vtruchannyakh (rynoskopiyi).",
+            "photo": "photo/tovar/evkazolin-akva-sprey-nazal-1mg-g-fl-10ml-pao-farmak-prod-400x400-bdda.jpg",
+            "price": "3.00",
+            "time_create": "2024-03-05T18:44:07.258Z",
+            "time_update": "2024-03-05T18:44:07.258Z",
+            "is_published": true,
+            "group": 2,
+            "slug": "evkazolin-aqua-nasal-spray-1-mgg-bottle-10-ml"
+        }
+    },
+    {
+        "model": "herbs.tovar",
+        "pk": 7,
+        "fields": {
+            "title": "Acetylsalicylic acid-Darnytsia (Aspirin) tablets of 500 mg 10 pcs",
+            "content": "Acetylsalicylic acid is intended for symptomatic treatment of headache, toothache;  sore throat caused by a cold;  algodysmenorrhea;  pain in muscles and joints;  back pain;  moderate pain caused by arthritis.\r\n\r\n For colds or acute respiratory diseases for symptomatic relief of pain and fever.",
+            "photo": "photo/tovar/atsetilsalitsilovaya-k-ta-aspirin-tabl-500mg-10-darnitsa-chao-farm-firma-pro_hFjtEzs.jpg",
+            "price": "1.50",
+            "time_create": "2024-03-05T18:46:47.093Z",
+            "time_update": "2024-03-05T18:46:47.093Z",
+            "is_published": true,
+            "group": 2,
+            "slug": "acetylsalicylic-acid-darnytsia-aspirin-tablets-of-500-mg-10-pcs"
+        }
+    },
+    {
+        "model": "herbs.tovar",
+        "pk": 8,
+        "fields": {
+            "title": "Naphthysin nasal drops 0.1% 10 ml polyethylene bottle with opening control",
+            "content": "Pharmacodynamics.  naphazoline has a pronounced effect on peripheral vessels due to its effect on α-adrenoceptors.  when applied to the mucous membranes, it reduces swelling, hyperemia, and exudation, which facilitates nasal breathing in rhinitis.  naphazoline promotes the opening and expansion of the excretory duct of the paranasal sinuses and Eustachian tubes, which improves secretion outflow and prevents the settling of bacteria.\r\n\r\n Pharmacokinetics.  When applied topically, naphazoline is completely absorbed.\r\n\r\n The therapeutic effect occurs within 5 minutes and lasts 4-6 hours with intranasal use.",
+            "photo": "photo/tovar/naftizin-kap-nazal-0-1-fl-10ml-p-e-pao-farmak-prod-400x400-7496.jpg",
+            "price": "2.00",
+            "time_create": "2024-03-05T18:48:14.577Z",
+            "time_update": "2024-03-16T09:49:00.317Z",
+            "is_published": true,
+            "group": 2,
+            "slug": "naphthysin-nasal-drops-01-10-ml-polyethylene-bottle-with-opening-control"
+        }
+    },
+    {
+        "model": "herbs.tovar",
+        "pk": 9,
+        "fields": {
+            "title": "Farmazolin nasal drops 0.1% bottle of 10 ml",
+            "content": "Farmazolin belongs to non-selective alpha-adrenomimetics, which locally narrow the vessels of the mucous membrane and reduce the severity of inflammatory processes.  when applied to the mucous membrane of the nose, it has an anti-edematous effect, reduces hyperemia and exudation, which facilitates nasal breathing and decreases blood flow in the venous sinuses.\r\n\r\n The drug acts mainly locally, is absorbed through the mucous membranes with normal use in a small amount.  The effect of the drug begins after 5-10 minutes and lasts for 5-6 hours.",
+            "photo": "photo/tovar/farmazolin-kap-nazal-0-1-fl-p-e-10ml-pao-farmak-prod-400x400-c63d.jpg",
+            "price": "3.00",
+            "time_create": "2024-03-05T18:50:38.330Z",
+            "time_update": "2024-03-05T18:50:38.331Z",
+            "is_published": true,
+            "group": 2,
+            "slug": "farmazolin-nasal-drops-01-bottle-of-10-ml"
+        }
+    },
+    {
+        "model": "herbs.tovar",
+        "pk": 10,
+        "fields": {
+            "title": "Nasalong nasal spray dosed 0.05% bottle of 10 g with a nasal sprayer",
+            "content": "Nasalong spray is prescribed for the treatment of acute rhinitis (runny nose) of any origin: infectious, viral, vasomotor or allergic (pollinosis).  In the complex treatment of sinusitis, eustachianitis, otitis media.\r\n\r\n In order to facilitate rhinoscopy and surgical manipulations in the nasal cavity.",
+            "photo": "photo/tovar/38337-3986-big-1500x1500-7989.jpg",
+            "price": "6.00",
+            "time_create": "2024-03-16T09:20:04.202Z",
+            "time_update": "2024-03-16T09:20:04.202Z",
+            "is_published": true,
+            "group": 2,
+            "slug": "nasalong-nasal-spray-dosed-005-bottle-of-10-g-with-a-nasal-sprayer"
+        }
+    },
+    {
+        "model": "herbs.tovar",
+        "pk": 11,
+        "fields": {
+            "title": "Naphthysin nasal drops 0.1% glass bottle 10 ml",
+            "content": "Acute rhinitis.  as an auxiliary agent for inflammation of the paranasal sinuses and middle ear.\r\n\r\n To reduce edema of the mucous membrane during diagnostic intervention.",
+            "photo": "photo/tovar/1399-340-big-1500x1500-8f16.jpg",
+            "price": "2.00",
+            "time_create": "2024-03-16T09:36:32.478Z",
+            "time_update": "2024-03-16T09:36:32.478Z",
+            "is_published": true,
+            "group": 2,
+            "slug": "naphthysin-nasal-drops-01-glass-bottle-10-ml"
+        }
+    },
+    {
+        "model": "herbs.tovar",
+        "pk": 12,
+        "fields": {
+            "title": "Ibuprofen-Darnytsia tablets 200 mg 5 blisters of 10 pcs",
+            "content": "Ibuprofen - Darnytsia is a nonsteroidal ant i- inflammatory drug (NSAID), a derivative of propionic acid, for the symptomatic treatment of headache, toothache, dysmenorrhea, neuralgia, back pain, joint pain, muscle pain, rheumatic pain, and the treatment of cold and flu symptoms.",
+            "photo": "photo/tovar/92664-33514-big-1500x1500-79b7.jpg",
+            "price": "6.00",
+            "time_create": "2024-03-16T09:38:34.443Z",
+            "time_update": "2024-03-16T09:42:34.097Z",
+            "is_published": true,
+            "group": 2,
+            "slug": "ibuprofen-darnytsia-tablets-200-mg-5-blisters-of-10-pcs"
+        }
+    },
+    {
+        "model": "herbs.tovar",
+        "pk": 13,
+        "fields": {
+            "title": "Ambroxol-Darnytsia tablets 30 mg 2 blisters of 10 pcs",
+            "content": "Secretolytic therapy for acute and chronic bronchopulmonary diseases associated with violation of bronchial secretion and weakening of the promotion of mucus.e treatment of cold and flu symptoms.",
+            "photo": "photo/tovar/192793-46126-big-1500x1500-68af.jpg",
+            "price": "2.00",
+            "time_create": "2024-03-16T09:41:56.829Z",
+            "time_update": "2024-03-16T09:41:56.829Z",
+            "is_published": true,
+            "group": 2,
+            "slug": "ambroxol-darnytsia-tablets-30-mg-2-blisters-of-10-pcs"
+        }
+    }
+]

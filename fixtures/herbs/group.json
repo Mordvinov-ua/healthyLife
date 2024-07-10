@@ -1,0 +1,158 @@
+[
+    {
+        "model": "herbs.group",
+        "pk": 2,
+        "fields": {
+            "photo": "photo/group/pngwing.com_HVvHySs.png",
+            "name": "Cold and flu",
+            "category": 1,
+            "time_create": "2024-02-29T15:24:26.336Z",
+            "time_update": "2024-02-29T16:47:43.858Z",
+            "is_published": true,
+            "slug": "cold-and-flu"
+        }
+    },
+    {
+        "model": "herbs.group",
+        "pk": 3,
+        "fields": {
+            "photo": "photo/group/pngwing_1.png",
+            "name": "Heart and blood vessels",
+            "category": 1,
+            "time_create": "2024-02-29T15:31:01.905Z",
+            "time_update": "2024-02-29T15:40:22.398Z",
+            "is_published": true,
+            "slug": "heart-and-blood-vessels"
+        }
+    },
+    {
+        "model": "herbs.group",
+        "pk": 4,
+        "fields": {
+            "photo": "photo/group/pngwing.com_2.png",
+            "name": "Digestive tract",
+            "category": 1,
+            "time_create": "2024-02-29T15:44:22.390Z",
+            "time_update": "2024-02-29T15:44:22.390Z",
+            "is_published": true,
+            "slug": "digestive-tract"
+        }
+    },
+    {
+        "model": "herbs.group",
+        "pk": 5,
+        "fields": {
+            "photo": "photo/group/Untitled.png",
+            "name": "Treatment for eyes and ears",
+            "category": 1,
+            "time_create": "2024-02-29T16:11:10.307Z",
+            "time_update": "2024-02-29T16:11:10.307Z",
+            "is_published": true,
+            "slug": "treatment-for-eyes-and-ears"
+        }
+    },
+    {
+        "model": "herbs.group",
+        "pk": 6,
+        "fields": {
+            "photo": "photo/group/Untitled_1_tS3HvJn.png",
+            "name": "Children's medications",
+            "category": 1,
+            "time_create": "2024-02-29T16:19:26.536Z",
+            "time_update": "2024-02-29T16:33:03.760Z",
+            "is_published": true,
+            "slug": "childrens-medications"
+        }
+    },
+    {
+        "model": "herbs.group",
+        "pk": 7,
+        "fields": {
+            "photo": "photo/group/pngwing.com_6.png",
+            "name": "Allergy treatment",
+            "category": 1,
+            "time_create": "2024-02-29T16:55:01.972Z",
+            "time_update": "2024-02-29T16:55:01.972Z",
+            "is_published": true,
+            "slug": "allergy-treatment"
+        }
+    },
+    {
+        "model": "herbs.group",
+        "pk": 8,
+        "fields": {
+            "photo": "photo/group/pngwing.com_7.png",
+            "name": "Immunity",
+            "category": 1,
+            "time_create": "2024-02-29T17:07:59.063Z",
+            "time_update": "2024-02-29T17:07:59.063Z",
+            "is_published": true,
+            "slug": "immunity"
+        }
+    },
+    {
+        "model": "herbs.group",
+        "pk": 9,
+        "fields": {
+            "photo": "photo/group/pngwing.com_8.png",
+            "name": "Vitamins and supplements",
+            "category": 1,
+            "time_create": "2024-02-29T17:16:22.891Z",
+            "time_update": "2024-02-29T17:16:22.891Z",
+            "is_published": true,
+            "slug": "vitamins-and-supplements"
+        }
+    },
+    {
+        "model": "herbs.group",
+        "pk": 10,
+        "fields": {
+            "photo": "photo/group/Untitled_2.png",
+            "name": "Urinary system",
+            "category": 1,
+            "time_create": "2024-02-29T17:23:32.021Z",
+            "time_update": "2024-02-29T17:25:44.829Z",
+            "is_published": true,
+            "slug": "urinary-system"
+        }
+    },
+    {
+        "model": "herbs.group",
+        "pk": 11,
+        "fields": {
+            "photo": "photo/group/Untitled_3.png",
+            "name": "Painkillers",
+            "category": 1,
+            "time_create": "2024-02-29T17:36:08.259Z",
+            "time_update": "2024-02-29T17:36:08.259Z",
+            "is_published": true,
+            "slug": "painkillers"
+        }
+    },
+    {
+        "model": "herbs.group",
+        "pk": 12,
+        "fields": {
+            "photo": "photo/group/Untitled_4.png",
+            "name": "Dental medications",
+            "category": 1,
+            "time_create": "2024-02-29T17:40:56.814Z",
+            "time_update": "2024-02-29T17:53:36.962Z",
+            "is_published": true,
+            "slug": "dental-medications"
+        }
+    },
+    {
+        "model": "herbs.group",
+        "pk": 13,
+        "fields": {
+            "photo": "photo/group/pngwing.com_12.png",
+            "name": "Diabetes treatment",
+            "category": 1,
+            "time_create": "2024-02-29T17:57:38.130Z",
+            "time_update": "2024-02-29T17:57:38.130Z",
+            "is_published": true,
+            "slug": "diabetes-treatment"
+        }
+    }
+]
