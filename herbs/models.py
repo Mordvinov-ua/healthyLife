@@ -7,9 +7,11 @@ class Tovar(models.Model):
     photo = models.ImageField(upload_to='photo/tovar/')
     price = models.DecimalField(max_digits=6, decimal_places=2)
     time_create = models.DateTimeField(auto_now_add= True)
+    discount = models.DecimalField(max_digits=4, decimal_places=2, default=0.0, help_text="Discount in percentage")
     time_update = models.DateTimeField(auto_now= True)
     is_published = models.BooleanField(default=True)
     group = models.ForeignKey('Group', on_delete=models.PROTECT)
+    sale_category = models.ForeignKey('Sale_category', on_delete=models.PROTECT, null=True, blank=True)
     slug = models.SlugField(max_length=100, db_index=True, unique=True, verbose_name='Url')
     quantity = models.PositiveIntegerField(default=0,)
 
@@ -18,6 +20,10 @@ class Tovar(models.Model):
     
     def get_absolute_url(self):
         return reverse('tovar', kwargs={'tovar_slug':self.slug})
+
+    def price_after_discount(self):
+        discount_amount = (self.discount / 100) * self.price
+        return self.price - discount_amount
 
     class Meta:
         verbose_name = 'Товар'
@@ -77,17 +83,18 @@ class Sale_category(models.Model):
         verbose_name = 'Категория карусели'
         verbose_name_plural = 'Категории карусели'
     
-class Sale_tovar(models.Model):
+'''class Sale_tovar(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
     photo = models.ImageField(upload_to='photo/tovar/')
-    alt_price = models.DecimalField(max_digits=6, decimal_places=2)
-    neu_price = models.DecimalField(max_digits=6, decimal_places=2)
     time_create = models.DateTimeField(auto_now_add= True)
     time_update = models.DateTimeField(auto_now= True)
     is_published = models.BooleanField(default=True)
-    sale_category = models.ForeignKey('Sale_category', on_delete=models.PROTECT)
     slug = models.SlugField(max_length=100, db_index=True, unique=True, verbose_name='Url')
+
+    alt_price = models.DecimalField(max_digits=6, decimal_places=2)
+    neu_price = models.DecimalField(max_digits=6, decimal_places=2)
+    
 
     def __str__(self):
         return self.title
@@ -97,4 +104,4 @@ class Sale_tovar(models.Model):
     
     class Meta:
         verbose_name = 'Товар карусели'
-        verbose_name_plural = 'Товары карусели'
+        verbose_name_plural = 'Товары карусели'''

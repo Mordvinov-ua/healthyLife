@@ -99,11 +99,11 @@
               <p>{{i.content|linebreaks|truncatewords:5}}</p>
               <ul class="price">
                 {% if i.sale_category.pk == 3 %}
-                <li style="color: white;"><s>{{i.alt_price}}€</s></li>
-                <li style="color: rgb(207, 6, 6);"><b>{{i.neu_price}}€</b></li>
+                <li style="color: white;"><s>{{i.price}} €</s></li>
+                <li style="color: rgb(207, 6, 6);"><b>{{i.price_after_discount|floatformat:2}} €</b></li>
                 {% else %}
                 <li></li>
-                <li style="color: white;"><b>{{i.alt_price}}€</b></li>
+                <li style="color: white;"><b>{{i.price}} €</b></li>
                 {% endif %}
               </ul>
             </div>

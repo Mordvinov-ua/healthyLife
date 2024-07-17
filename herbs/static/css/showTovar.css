@@ -132,6 +132,8 @@
     transform: scale(1.05);
 }
 .price{
+    display: flex;
+    justify-content: space-between;
     list-style: none;
     padding-left: 0;
     padding-right: 1em;

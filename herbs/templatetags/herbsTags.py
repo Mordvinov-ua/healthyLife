@@ -17,10 +17,6 @@ def get_sale_cat():
     return Sale_category.objects.all()
 
 @register.simple_tag()
-def get_sale_tovar():
-    return Sale_tovar.objects.all()
-
-@register.simple_tag()
 def get_categories():
     return Category.objects.all()
 

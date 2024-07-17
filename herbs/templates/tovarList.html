@@ -70,7 +70,13 @@
                         <h5 style="color: white;">{{t}}</h5>
                         <p>{{t.content|linebreaks|truncatewords:6}}</p>
                         <ul class="price">
-                            <li style="color: white;"><b>{{t.price}} €</b></li>
+                            {% if t.discount != 0 %}
+                                <li style="color: white;"><s>{{t.price}} €</s></li>
+                                <li style="color: rgb(207, 6, 6);"><b>{{t.price_after_discount|floatformat:2}} €</b></li>
+                            {% else %}
+                                <li></li>
+                                <li style="color: white;"><b>{{t.price}} €</b></li>
+                            {% endif %}
                         </ul>
                     </div>
                     <div class="but_buy">

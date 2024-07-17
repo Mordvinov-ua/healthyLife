@@ -29,7 +29,11 @@ class Cart(models.Model):
     objects = CartQueryset().as_manager()
 
     def products_price(self):
-        return round(self.product.price * self.quantity, 2)
+        if self.product.discount:
+            self.product.price_after_discount = self.product.price * (1 - self.product.discount / 100)
+            return round(self.product.price_after_discount * self.quantity, 2)
+        else:
+            return round(self.product.price * self.quantity, 2)
 
     def __str__(self):
         if self.user:

@@ -22,11 +22,11 @@ class GroupAdmin(admin.ModelAdmin):
 admin.site.register(Group, GroupAdmin)
 
 class TovarAdmin(admin.ModelAdmin):
-    list_display = ('title','group','time_create','time_update','is_published')
+    list_display = ('title','group','time_create','time_update','is_published',)
     list_display_links = ('title','group',)
-    search_fields = ('title','group',)
+    search_fields = ('title','group','sale_category',)
     list_editable = ('is_published',)
-    list_filter = ('group','time_create','time_update','is_published',)
+    list_filter = ('group','time_create','time_update','is_published','sale_category')
     prepopulated_fields = {"slug":("title",)}
 
 admin.site.register(Tovar, TovarAdmin)
@@ -41,7 +41,7 @@ class Sale_categoryAdmin(admin.ModelAdmin):
 
 admin.site.register(Sale_category, Sale_categoryAdmin)
 
-class Sale_tovarAdmin(admin.ModelAdmin):
+'''class Sale_tovarAdmin(admin.ModelAdmin):
     list_display = ('title','sale_category','time_create','time_update','is_published')
     list_display_links = ('title','sale_category',)
     search_fields = ('title','sale_category',)
@@ -49,4 +49,4 @@ class Sale_tovarAdmin(admin.ModelAdmin):
     list_filter = ('sale_category','time_create','time_update','is_published',)
     prepopulated_fields = {"slug":("title",)}
 
-admin.site.register(Sale_tovar, Sale_tovarAdmin)
+admin.site.register(Sale_tovar, Sale_tovarAdmin)'''

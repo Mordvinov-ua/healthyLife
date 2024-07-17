@@ -6,7 +6,7 @@ from django.core.paginator import Paginator
 
 
 def mainPage(request):
-    contact_list = Sale_tovar.objects.all()
+    contact_list = Tovar.objects.all()
     paginator = Paginator(contact_list, 6)
 
     page_number = request.GET.get('page')
@@ -15,13 +15,20 @@ def mainPage(request):
     return render(request, 'mainPage.html', {'page_obj':page_obj, 'value':3})
 
 def sale_cat(request, sale_cat_id):
-    contact_list = Sale_tovar.objects.all()
+    contact_list = Tovar.objects.all()
+
+    for product in contact_list:
+        if product.discount:
+            product.price_after_discount = product.price * (1 - product.discount / 100)
+        else:
+            product.price_after_discount = product.price
+
     paginator = Paginator(contact_list, 6)
 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-    return render(request, 'mainPage.html', {'page_obj':page_obj, 'value':sale_cat_id})
+    return render(request, 'mainPage.html', {'page_obj':page_obj, 'value':sale_cat_id, 'price_after_discount': product.price_after_discount})
 
 def showCat (request, cat_slug):
     return render (request, 'groupPage.html', {'slug':cat_slug})
