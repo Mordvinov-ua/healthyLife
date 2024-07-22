@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 
 from herbs.utils import q_search
 from .models import *
@@ -15,7 +15,11 @@ def mainPage(request):
     return render(request, 'mainPage.html', {'page_obj':page_obj, 'value':3})
 
 def sale_cat(request, sale_cat_id):
-    contact_list = Tovar.objects.all()
+    # Получаем категорию распродажи по ID
+    sale_category = get_object_or_404(Sale_category, id=sale_cat_id)
+
+    # Получаем список товаров по указанной категории распродажи
+    contact_list = Tovar.objects.filter(sale_category=sale_category)
 
     for product in contact_list:
         if product.discount:
@@ -35,9 +39,12 @@ def showCat (request, cat_slug):
 
 def priceList (request, priceList_slug):
 
+    group = get_object_or_404(Group, slug=priceList_slug)
+
     order_by = request.GET.get('order_by', None)
 
-    contact_list = Tovar.objects.all()
+    contact_list = Tovar.objects.filter(group=group)
+
     if order_by:
         contact_list = contact_list.order_by(order_by)
 

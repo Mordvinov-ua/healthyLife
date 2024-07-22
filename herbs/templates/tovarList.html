@@ -94,36 +94,39 @@
         </div>
         <div class="pagination_block">
             <ul class="pag">
-
-                <li {% if page_obj.has_previous %}
-                    class="previousPage">
-                    <a href="?{% change_params page=page_obj.previous_page_number %}">
+                <!-- Previous Page Link -->
+                <li class="{% if page_obj.has_previous %}previousPage{% else %}disabled{% endif %}">
+                    {% if page_obj.has_previous %}
+                        <a href="?{% change_params page=page_obj.previous_page_number %}">Previous</a>
                     {% else %}
-                    class="disabled"><a>
+                        <a >Previous</a>
                     {% endif %}
-                    Previous</a>
                 </li>
-
+        
+                <!-- Page Number Links -->
                 {% for page in page_obj.paginator.page_range %}
-                {% if page >= page_obj.number|add:-2 and page <= page_obj.number|add:2 %}
-                    <li id="number{% if page_obj.number == page %}active{% endif %}">
-                        <a href="?{% change_params page=page %}">{{page}}</a>
-                    </li>
-                {% endif %}
-                {% endfor %}
-
-                <li {% if page_obj.has_next %}
-                    class="nextPage">
-                    <a href="?{% change_params page=page_obj.next_page_number %}">
-                    {% else %}
-                    class="disabled">
+                    {% if page >= page_obj.number|add:-2 and page <= page_obj.number|add:2 %}
+                        <li id="{% if page_obj.number == page %}numberactive{% else %}number{% endif %}" >
+                            {% if page_obj.number != page %}
+                                <a href="?{% change_params page=page %}">{{ page }}</a>
+                            {% else %}
+                                <a >{{ page }}</a>
+                            {% endif %}
+                            
+                        </li>
                     {% endif %}
-                    Next</a>
+                {% endfor %}
+        
+                <!-- Next Page Link -->
+                <li class="{% if page_obj.has_next %}nextPage{% else %}disabled{% endif %}">
+                    {% if page_obj.has_next %}
+                        <a href="?{% change_params page=page_obj.next_page_number %}">Next</a>
+                    {% else %}
+                        <a >Next</a>
+                    {% endif %}
                 </li>
             </ul>
         </div>
-        
-    </div>
 
 </body>
 {% endblock %}

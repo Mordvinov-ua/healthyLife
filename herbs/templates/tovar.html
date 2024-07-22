@@ -17,43 +17,23 @@
             <ul class="mainInfo">
                 <li class="content">{{t.content}}</li>
                 <hr>
-                <li>price: <h1 class="price">{{t.price}} $</h1></li>
-                <div class="but_buy">
-                    <a class="button_buy" href="#">buy</a>
-                </div>
-            </ul>
-            
-        </div>
-        {% endif %}
-    {% endfor %}
-
-    {% for t in sale_tov%}
-        {% if t.slug == slug %}
-        <div class="tovarName">
-           <h1>{{t}}</h1>
-        </div>
-        <div class="tovarInfo">
-            <img src="{{t.photo.url}}">
-            <ul class="mainInfo">
-                <li class="content">{{t.content}}</li>
-                <hr>
-                {% if t.sale_category.pk == 3 %}
-                <ul class="salePrice">
-                    <li>price: <h1 class="price"style="color: white;"><s>{{t.alt_price}}€</s></h1></li>
-                    <li>price: <h1 class="price"style="color: rgb(207, 6, 6);"><b>{{t.neu_price}}€</b></h1></li>
+                <ul class="price">
+                    {% if t.discount != 0 %}
+                        <li style="color: white;"><b>{{t.price_after_discount|floatformat:2}} €</b></li>
+                        <li style="color: white;"><s>{{t.price}} €</s></li>
+                    {% else %}
+                        <li style="color: white;"><b>{{t.price}} €</b></li>
+                    {% endif %}
                 </ul>
-                {% else %}
-                <li></li>
-                <li style="color: white;">{{t.alt_price}}€</li>
-                {% endif %}
-                <div class="but_buy">
-                    <a class="button_buy" href="#">buy</a>
-                </div>
-            </ul>
-            
+            <div class="but_buy">
+                <a class="button_buy_in_click" href="#">buy in click</a>
+                <a class="button_buy_korb add-to-cart" href="{% url "cart_add" %}" data-product-id="{{ t.id }}">
+                    {% csrf_token %}
+                    <img class="add_in_korb" src="{% static 'images/korb_add.png' %}">
+                </a>
+            </div>
         </div>
-        {% endif %}
+        {% endif %}  
     {% endfor %}
-</div class="tovarPage">
 
 {% endblock %}

@@ -78,19 +78,7 @@
         {% if i.sale_category.pk == value %}
 
 
-        <div class="carousel-indicators" style="margin-left: 0;">
-          {% for page in page_obj.paginator.page_range %}
-
-          {% if page_obj.number == page %}
-          <button type="button" data-bs-target="#carouselExampleIndicators" href="?page={{page}}#salenav" class="active"
-            aria-current="true" aria-label="Slide {{page}}"></button>
-          {% else %}
-          <a type="button" data-bs-target="#carouselExampleIndicators" href="?page={{page}}#salenav"
-            aria-label="Slide {{page}}"></a>
-          {% endif %}
-
-          {% endfor %}
-        </div>
+        
         <a class="a_group_cart" href="{% url 'tovar' i.slug %}">
           <div class="tovarCart">
             <img class="tovarCartImg" src="{{i.photo.url}}">
@@ -123,6 +111,19 @@
 
 
       </div>
+      <div class="carousel-indicators" style="margin-left: 0;">
+          {% for page in page_obj.paginator.page_range %}
+
+          {% if page_obj.number == page %}
+          <button type="button" data-bs-target="#carouselExampleIndicators" href="?page={{page}}#salenav" class="active"
+            aria-current="true" aria-label="Slide {{page}}"></button>
+          {% else %}
+          <a type="button" data-bs-target="#carouselExampleIndicators" href="?page={{page}}#salenav"
+            aria-label="Slide {{page}}"></a>
+          {% endif %}
+
+          {% endfor %}
+        </div>
       {% if page_obj.has_previous %}
       <a class="carousel-control-prev" style="width: 60px;" type="button" data-bs-target="#carouselExampleIndicators"
         href="?page={{ page_obj.previous_page_number }}#salenav">

@@ -4,7 +4,7 @@ from orders.models import Order, OrderItem
 from users.forms import ProfileForm, UserLoginForm, UserRegistrationForm
 from django.contrib import auth, messages
 from django.http import HttpResponseRedirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.db.models import Prefetch
 
@@ -69,7 +69,7 @@ def profile(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Profile updated successfully")
-            return HttpResponseRedirect(reverse("profile"))
+            return HttpResponseRedirect(reverse_lazy("profile"))
         else:
             messages.error(request, "Error updating profile: " + str(form.errors))
     else:

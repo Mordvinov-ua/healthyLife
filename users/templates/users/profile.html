@@ -12,6 +12,11 @@
                         <h3 class="text-center mb-4">Профиль пользователя</h3>
                         <form action="{% url "profile" %}" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
+                            {% if form.non_field_errors %}
+                                <div class="alert alert-danger alert-dismissible fade show">
+                                    {{ form.non_field_errors }}
+                                </div>
+                            {% endif %}
                             <div class="row">
                                 <div class="col-md-12 mb-3 text-center">
                                     {% if user.image %}
@@ -19,7 +24,7 @@
                                             alt="Аватар пользователя" class="img-fluid rounded-circle"
                                             style="max-width: 150px;">
                                     {% else %}
-                                    <img src="../deps/images/baseavatar.jpg"
+                                    <img src=""
                                         alt="Аватар пользователя" class="img-fluid rounded-circle"
                                         style="max-width: 150px;">
                                     {% endif %}
@@ -40,13 +45,13 @@
                                             <li><a class="dropdown-item country-select" href="#" data-phone-code="{{ lands_object.number_code }}">{{ lands_object.land }}</a></li>
                                         {% endfor %}
                                     </ul>
-                                    <input type="hidden" class="form-control" id="id_country_or_region" value="" name="country_or_region" required>
+                                    <input type="text" class="form-control" id="id_country_or_region" value="" name="country_or_region" required>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="id_first_name" class="form-label">First name:</label>
-                                    <input type="text" class="form-control" id="id_first_name"
-                                        value="{{form.first_name.value}}"
-                                        name ="first_name"
+                                    <input type="text" class="form-control" id="id_first_name" name ="first_name"
+                                        value="{% if form.first_name.value %}{{form.first_name.value}}{% endif %}"
+                                        
                                         placeholder="Enter first name" required>
                                         {% if form.first_name.errors %}
                                             <div class="alert alert-danger alert-dismissible fade show">{{form.first_name.errors}}</div>
@@ -54,9 +59,8 @@
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="id_last_name" class="form-label">Last name:</label>
-                                    <input type="text" class="form-control" id="id_last_name"
-                                        value="{{form.last_name.value}}"
-                                        name ="last_name"
+                                    <input type="text" class="form-control" id="id_last_name" name ="last_name"
+                                        value="{% if form.last_name.value %}{{form.last_name.value}}{% endif %}"
                                         placeholder="Enter last name" required>
                                         {% if form.last_name.errors %}
                                         <div class="alert alert-danger alert-dismissible fade show">{{form.last_name.errors}}</div>
@@ -64,9 +68,8 @@
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="id_username" class="form-label">Username:</label>
-                                    <input type="text" class="form-control" id="id_username"
-                                        value="{{form.username.value}}"
-                                        name ="username"
+                                    <input type="text" class="form-control" id="id_username" name ="username"
+                                        value="{% if form.username.value %}{{form.username.value}}{% endif %}"
                                         placeholder="Enter nickname" required>
                                         {% if form.username.errors %}
                                         <div class="alert alert-danger alert-dismissible fade show">{{form.username.errors}}</div>
@@ -74,9 +77,8 @@
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="id_street_and_house_number" class="form-label">Street and house number:</label>
-                                    <input type="street_and_house_number" class="form-control" id="id_street_and_house_number"
-                                        value="{{form.street_and_house_number.value}}"
-                                        name ="street_and_house_number"
+                                    <input type="street_and_house_number" class="form-control" id="id_street_and_house_number" name ="street_and_house_number"
+                                        value="{% if form.street_and_house_number.value %}{{form.street_and_house_number.value}}{% endif %}"
                                         placeholder="Street and house number" required>
                                         {% if form.street_and_house_number.errors %}
                                         <div class="alert alert-danger alert-dismissible fade show">{{form.street_and_house_number.errors}}</div>
@@ -84,9 +86,9 @@
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="id_postcode" class="form-label">Postcode:</label>
-                                    <input type="text" class="form-control" id="id_postcode"
+                                    <input type="text" class="form-control" id="id_postcode" name="postcode" 
                                         value="{% if form.postcode.value %}{{form.postcode.value}}{% endif %}"
-                                        name="postcode" required>
+                                        required>
                                     {% if form.postcode.errors %}
                                         <div class="alert alert-danger alert-dismissible fade show">{{form.postcode.errors}}</div>
                                     {% endif %}

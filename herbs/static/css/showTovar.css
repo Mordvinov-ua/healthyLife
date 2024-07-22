@@ -167,6 +167,7 @@
     margin: 0;
     padding: 0;
 }
+
 #number:hover{
     font-weight: bold;
     background-color: rgb(84, 121, 40);
@@ -185,7 +186,8 @@
 }
 #numberactive{
     background-color: rgb(84, 121, 40);
+    color: white;
 }
 .disabled{
-    color: rgb(187, 187, 187);
+    color: gray;
 }

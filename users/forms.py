@@ -40,12 +40,11 @@ class ProfileForm(UserChangeForm):
         model = User
         fields = (
             "image",
+            "country_or_region",
             "first_name",
             "last_name",
             "username",
-            "country_or_region",
             "street_and_house_number",
-            "additional_address",
             "postcode",
             "location",
             "email",

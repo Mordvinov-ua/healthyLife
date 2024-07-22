@@ -2,6 +2,7 @@
 {% load carts_tags %}
 
 {% user_carts request as carts%}
+<link rel="stylesheet" href="{% static 'css/included_cart.css' %}" type="text/css">
 
 <div class="card mb-3 text-bg-light shadow-lg">
     {% for cart in carts %}
@@ -14,13 +15,13 @@
                 <div class="col p-0">
                     <div class="input-group">
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-dark btn-sm decrement"
+                            <button type="button" class="btn btn-sm decrement"
                                 data-cart-id="{{ cart.id }}" data-cart-change-url="{% url "cart_change" %}">-</button>
                         </span>
                         <input type="text" class="form-control number" value="{{ cart.quantity }}"
                             readonly>
                         <span class="input-group-btn">
-                            <button type="button" class="btn btn-dark btn-sm increment"
+                            <button type="button" class="btn btn-sm increment"
                                 data-cart-id="{{ cart.id }}" data-cart-change-url="{% url "cart_change" %}">+</button>
                         </span>
                     </div>

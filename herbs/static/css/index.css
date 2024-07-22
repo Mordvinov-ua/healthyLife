@@ -32,7 +32,7 @@ footer{
     border-color: rgb(126, 175, 65, 1);
 }
 .logo_panel>form>button{
-    color: rgb(126, 175, 65, 1);
+    color: white;
     border-color: rgb(126, 175, 65, 1);
 }
 .logo_panel>form>input{
@@ -57,6 +57,9 @@ footer{
 }
 .modal-body {
     z-index: 3 !important;
+}
+.text-center{
+    color: rgb(126, 175, 65, 1);
 }
 .nav-item{
     cursor: pointer;
