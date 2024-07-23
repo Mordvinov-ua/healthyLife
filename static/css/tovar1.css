@@ -1,0 +1,79 @@
+.tovarInfo{
+    display: flex;
+}
+.tovarInfo>img{
+    width: 400px;
+    margin: 1em;
+    margin-top: 0;
+}
+.tovarName{
+    margin-left: 2em;
+    margin-top: 1em;
+    color: rgb(126, 175, 65, 1);
+}
+.tovarPage{
+    background-color: rgb(84, 121, 40);
+    display: inline-block;
+    width: 100%;
+}
+.mainInfo{
+    list-style: none;
+    color: white;
+}
+.salePrice{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+}
+.price{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding-left: 0;
+    padding-right: 1em;
+    font-size: 200%;
+}
+.content{
+    font-size: large;
+}
+.button_buy_korb{
+    background-color: rgb(126, 175, 65, 1);
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    border-radius: 16px;
+    padding: 5px;
+    margin-right: 33px;
+    margin-bottom: 10px;
+}
+.button_buy_in_click{
+    background-color: rgb(126, 175, 65, 1);
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    border-radius: 16px;
+    padding: 8px;
+    margin-right: 33px;
+    margin-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.add_in_korb{
+    max-width: 30px;
+}
+.but_buy{
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+.button_buy_in_click:hover{
+    transform: scale(1.05);
+}
+.button_buy_korb:hover{
+    transform: scale(1.05);
+}
