@@ -26,33 +26,38 @@
 <div class="mainer">
     <header>
 
-        <nav class="navbar navbar-expand-lg bg-body-tertiary logo_search">
-            <div class="container-fluid ">
-              <a href="{% url 'home' %}"><img src="{% static 'images/logoHL.png' %}" alt=""></a>
-              
-              <div class="logo_panel">
-                <form class="d-flex" role="search" action="{% url "search" %}" method="get">
-                  <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary logo_search">
+        <div class="container-fluid">
+
+            <a href="{% url 'home' %}" class="logo"><img src="{% static 'images/logoHL.png' %}" alt="Logo"></a>
+            
+            <div class="logo_panel">
+                <form class="d-flex search-form" role="search" action="{% url "search" %}" method="get">
+                    <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
                 
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="ul_personal_area">
                     <li class="nav-item">
-                      <a href="{% if not user.is_authenticated %}{% url "login" %}{% else %}{% url "profile" %}{% endif %}"><img src="{% static 'images/lk.svg' %}" alt=""></a>
+                        <a href="{% if not user.is_authenticated %}{% url "login" %}{% else %}{% url "profile" %}{% endif %}">
+                            <img src="{% static 'images/lk.svg' %}" alt="LK">
+                        </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="{% if not user.is_authenticated %}{% url "login" %}{% else %}{% url "profile" %}{% endif %}">Personal Area</a>
-                    </li>
-                    <li class="nav-item" id="modalButton" aria-expanded="false" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                      <img src="{% static 'images/korzina.svg' %}">
-                    </li>
-                    <li class="nav-item" id="modalButton" aria-expanded="false" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                      <a class="nav-link">Basket</a>
+                        <a class="nav-link" href="{% if not user.is_authenticated %}{% url "login" %}{% else %}{% url "profile" %}{% endif %}">Personal Area</a>
                     </li>
                   </ul>
-              </div>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="ul_basket">
+                    <li class="nav-item" id="modalButton" aria-expanded="false" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <img src="{% static 'images/korzina.svg' %}" alt="Basket">
+                    </li>
+                    <li class="nav-item" id="modalButton" aria-expanded="false" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <a class="nav-link">Basket</a>
+                    </li>
+                </ul>
             </div>
-        </nav>
+        </div>
+    </nav>
 
         <nav class="navbar navbar-expand-lg bg-body-tertiary main_panel">
             <div class="container-fluid nav_panel">
@@ -60,7 +65,7 @@
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
-
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav categories categories">
                   {% for c in cat %}
                   <li class="nav-item">
@@ -90,6 +95,7 @@
                   </li>
                   {% endfor %}
                 </ul>
+              </div>
             </div>
         </nav>
 
