@@ -1,6 +1,6 @@
 video{
     width: 100%;
-    height: 370px;
+    height: 25vw;
     position: relative;
     top: 0;
     left: 0;
@@ -10,7 +10,7 @@ video{
 
 }
 .video_text{
-    top: 200px;
+    top: 15vw;
     left: 0;
     margin: 2em;
     position: absolute;
@@ -18,7 +18,11 @@ video{
     color: white;
 }
 .video_text>p{
-    font-size: larger;
+    font-size: 1.5vw;
+}
+.video_text>h1{
+    font-size: 2.5vw;
+    font: bold;
 }
 .o_nas{
     position: relative;
@@ -36,9 +40,23 @@ video{
     text-decoration: none;
     color: rgb(126, 175, 65, 1);
 }
-.about_text{
+.about_text a p{
+    font-size: 1.5vw;
+}
+.about_text a h2{
+    font-size: 2.5vw;
+}
+.about_img a img{
+    width: 9vw;
+    
+}
+.about_img{
     margin: auto;
     margin-left: 1em;
+    margin-right: 1em;
+}
+.about_text{
+    margin: auto;
 }
 .about_cart:hover{
     transform: scale(1.05);
@@ -116,4 +134,43 @@ video{
 }
 .a_sale_cart{
     text-decoration: none;
+}
+@media (max-width: 990px) {
+    .video_text{
+        top: 38vw;
+    }
+    .about_cart:hover{
+        transform:none;
+    }
+}
+@media (max-width: 860px) {
+    .video_text{
+        top: 21em;
+    }
+    video{
+        width: 100%;
+        height: 12em;
+    }
+    .video_text>p{
+        font-size: 1.5vw;
+    }
+    .video_text>h1{
+        font-size: 2.5vw;
+        font: bold;
+    }
+}
+@media (max-width: 660px) {
+    .video_text>p{
+        font-size: 2vw;
+    }
+    .video_text>h1{
+        font-size: 3vw;
+        font: bold;
+    }
+    .about_text a p{
+        font-size: 2vw;
+    }
+    .about_text a h2{
+        font-size: 3vw;
+    }
 }

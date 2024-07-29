@@ -97,10 +97,10 @@
             </div>
             <div class="but_buy">
               <a class="button_buy_in_click" href="#">buy in click</a>
-                        <a class="button_buy_korb add-to-cart" href="{% url "cart_add" %}" data-product-id="{{ i.id }}">
-                            {% csrf_token %}
-                            <img class="add_in_korb" src="{% static 'images/korb_add.png' %}">
-                        </a>
+              <a class="button_buy_korb add-to-cart" href="{% url "cart_add" %}" data-product-id="{{ i.id }}">
+                  {% csrf_token %}
+                  <img class="add_in_korb" src="{% static 'images/korb_add.png' %}">
+              </a>
             </div>
           </div>
         </a>

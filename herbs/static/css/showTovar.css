@@ -61,22 +61,21 @@
     border: 1px solid white;
     background-color: rgb(126, 175, 65, 1);
     overflow: hidden;
-    width: 260px;
+    width: 20vw;
 }
 .tovarCartImg{
     border-radius: 16px;
-    max-width: 240px;
-    max-height: 240px;
-    padding: 0;
-    margin: 10px;
+    width: 18vw;
+    height: auto;
+    margin: 1vw;
     margin-bottom: 0;
 }
 .infoTovar{
     margin: 1em;
     margin-bottom: 0em;
 }
-.infoTovar>h5{
-    font-size: 150%;
+.infoTovar h5{
+    font-size: 2vw;
     border-bottom: 1px solid;
     margin-bottom: 0;
     white-space: nowrap;
@@ -84,7 +83,7 @@
     text-overflow: ellipsis;
 }
 .infoTovar>p{
-    font-size: 95%;
+    font-size: 1.2vw;
     color: white;
 }
 .button_buy_korb{
@@ -107,14 +106,15 @@
     text-decoration: none;
     color: white;
     border-radius: 16px;
-    padding: 8px;
-    margin-right: 33px;
-    margin-bottom: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 0.5em;
+    margin-right: 2em;
+    margin-bottom: 0.6em;
+    padding-left: 1em;
+    padding-right: 1em;
+    font-size: 1.2vw;
 }
 .add_in_korb{
-    max-width: 30px;
+    max-width: 2.4vw;
 }
 .but_buy{
     width: 100%;
@@ -137,7 +137,7 @@
     list-style: none;
     padding-left: 0;
     padding-right: 1em;
-    font-size: 200%;
+    font-size: 2.6vw;
 }
 .pagination_block{
     display: flex;
@@ -190,4 +190,67 @@
 }
 .disabled{
     color: gray;
+}
+@media (max-width: 900px) {
+    .price{
+        font-size: 2.4vw;
+    }
+    .button_buy_in_click:hover{
+        transform: none;
+    }
+    .button_buy_korb:hover{
+        transform: none;
+    }
+    .tovarCart:hover{
+        transform: none;
+    }
+}
+@media (max-width: 750px) {
+    .tovarCart{
+        width: 24vw;
+    }
+    .tovarCartImg{
+        width: 22vw;
+    }
+    .infoTovar h5{
+        font-size: 2.4vw;
+    }
+    .infoTovar>p{
+        font-size: 1.5vw;
+    }
+}
+@media (max-width: 550px) {
+    .tovarCart{
+        width: 30vw;
+    }
+    .tovarCartImg{
+        width: 28vw;
+    }
+    .infoTovar h5{
+        font-size: 2.7vw;
+    }
+    .infoTovar>p{
+        font-size: 1.8vw;
+    }
+    .price{
+        font-size: 3vw;
+    }
+    .button_buy_in_click{
+        background-color: rgb(84, 121, 40);
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        text-decoration: none;
+        color: white;
+        border-radius: 16px;
+        padding: 0.8em;
+        margin-right: 0.5em;
+        margin-bottom: 0.6em;
+        padding-left: 1em;
+        padding-right: 1em;
+        font-size: 1.8vw;
+    }
+    .add_in_korb{
+        max-width: 3.5vw;
+    }
 }
