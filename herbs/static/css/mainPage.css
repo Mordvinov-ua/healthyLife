@@ -65,6 +65,14 @@ video{
     position: relative;
     width: 100%;
 }
+#platz_sale_cards{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3em;
+}
+.carousel-indicators{
+    width: 100%;
+}
 .price{
     display: flex;
     justify-content: space-between;
@@ -161,16 +169,20 @@ video{
 }
 @media (max-width: 660px) {
     .video_text>p{
-        font-size: 2vw;
+        font-size: 1.7vw;
     }
     .video_text>h1{
-        font-size: 3vw;
+        font-size: 2.7vw;
         font: bold;
     }
     .about_text a p{
-        font-size: 2vw;
+        font-size: 3vw;
     }
     .about_text a h2{
-        font-size: 3vw;
+        font-size: 4vw;
+    }
+    .about_img a img{
+        width: 10vw;
+        
     }
 }

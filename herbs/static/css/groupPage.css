@@ -58,3 +58,9 @@
 		transform: scale(1);
 	}
 }
+@media (max-width: 990px) {
+    .group_cart:hover{
+        animation: none;
+        box-shadow: none;
+    }
+}
