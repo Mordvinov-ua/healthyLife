@@ -30,6 +30,15 @@ class Tovar(models.Model):
         verbose_name_plural = 'Товары'
         ordering = ("id",)
 
+class TovarPhoto(models.Model):
+    tovar = models.ForeignKey(Tovar, related_name='photos', on_delete=models.CASCADE)
+    photo = models.ImageField(upload_to='photo/tovar/')
+
+    class Meta:
+        verbose_name = 'Фото товара'
+        verbose_name_plural = 'Фото товаров'
+        ordering = ('id',)
+
 class Group(models.Model):
     photo = models.ImageField(upload_to='photo/group/')
     name = models.CharField(max_length=100, db_index=True)

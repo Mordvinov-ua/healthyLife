@@ -31,6 +31,14 @@ video{
     display: flex;
     justify-content: center;
 }
+.modal {
+    z-index: 1050; /* Установите z-index для модального окна */
+}
+
+.modal-backdrop {
+    z-index: 1040; /* Установите z-index для фона модального окна */
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный фон */
+}
 .about_cart{
     display: flex;
     margin: 1em;
@@ -44,6 +52,19 @@ video{
     font-size: 1.5vw;
 }
 .about_text a h2{
+    font-size: 2.5vw;
+}
+.about_text_special{
+    margin: auto;
+}
+.about_text_special p{
+    color: rgb(126, 175, 65, 1); 
+    cursor:pointer;
+    font-size: 1.5vw;
+}
+.about_text_special h2{
+    color: rgb(126, 175, 65, 1); 
+    cursor:pointer;
     font-size: 2.5vw;
 }
 .about_img a img{
@@ -176,7 +197,7 @@ video{
         font: bold;
     }
     .about_text a p{
-        font-size: 3vw;
+        display: none;
     }
     .about_text a h2{
         font-size: 4vw;
@@ -184,5 +205,14 @@ video{
     .about_img a img{
         width: 10vw;
         
+    }
+    .about_text_special>p{
+        display: none;
+    }
+    .about_text_special h2{
+        font-size: 4vw;
+    }
+    .about_cart{
+        margin-left: 0;
     }
 }

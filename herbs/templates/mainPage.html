@@ -24,29 +24,42 @@
 </div>
 
 <div class="o_nas">
+  <div class="about_cart" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    <div class="about_img">
+      <a><img class="img-article-left thumb" style="cursor:pointer;" src="{% static 'images/about_us_icon.png' %}"></a>
+    </div>
+    <div class="about_text_special">
+        <h2 class="about-title" >About us</h2>
+        <p>get to know us</p>
+    </div>
+  </div>
+  
+  
+
+
   <div class="about_cart">
     <div class="about_img">
-      <a href="#"><img class="img-article-left thumb" src="{% static 'images/dostavka.svg' %}"></a>
+      <a href="https://www.ebay.de/str/worldofseeds1/Herbs/_i.html?store_cat=3942334419&_tab=feedback" target="_blank" rel="noopener noreferrer"><img class="img-article-left thumb" src="{% static 'images/reviews_icon.png' %}"></a>
     </div>
     <div class="about_text">
-      <a href="#">
-        <h2 class="about-title">Fast delivery</h2>
+      <a href="https://www.ebay.de/str/worldofseeds1/Herbs/_i.html?store_cat=3942334419&_tab=feedback" target="_blank" rel="noopener noreferrer">
+        <h2 class="about-title">Review</h2>
       </a>
-      <a href="#">
-        <p>anywhere in the world</p>
+      <a href="https://www.ebay.de/str/worldofseeds1/Herbs/_i.html?store_cat=3942334419&_tab=feedback" target="_blank" rel="noopener noreferrer">
+        <p>what our Clients say</p>
       </a>
     </div>
   </div>
   <div class="about_cart">
     <div class="about_img">
-      <a href="#"><img class="img-article-left thumb" src="{% static 'images/zakaz.svg' %}"></a>
+      <a href="https://www.ebay.de/str/worldofseeds1/Herbs/_i.html?store_cat=3942334419" target="_blank" rel="noopener noreferrer"><img class="img-article-left thumb" src="{% static 'images/shop_icon.png' %}"></a>
     </div>
     <div class="about_text">
-      <a href="#">
-        <h2 class="about-title">Checkout</h2>
+      <a href="https://www.ebay.de/str/worldofseeds1/Herbs/_i.html?store_cat=3942334419" target="_blank" rel="noopener noreferrer">
+        <h2 class="about-title">eBay Shop</h2>
       </a>
-      <a href="#">
-        <p>without registering</p>
+      <a href="https://www.ebay.de/str/worldofseeds1/Herbs/_i.html?store_cat=3942334419" target="_blank" rel="noopener noreferrer">
+        <p>explore our eBay store</p>
       </a>
     </div>
   </div>
@@ -143,6 +156,31 @@
   </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Allow me to introduce myself</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Вставьте видео с YouTube -->
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/RnhgFPq_vJ8?si=z7SXgjmLrAyudBiu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <!-- Описание -->
+        <p>Hello everyone) My name is Ira and I own this store ) I really love natural things and want to share with you) I was born in the beautiful country of Ukraine and in my homeland there are many things that the WORLD should see)) Pharmacy preparations, eco tinctures, organic herbs, delicious honey and many other products.
+          You can always write me a personal message and ask for a product that I do not have for sale, I assure you that I will always be happy to help you find everything you need)
+          
+          Best regards Irina</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nice to meet you</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock %}
 
