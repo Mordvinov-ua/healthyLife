@@ -13,7 +13,25 @@
            <h1>{{t}}</h1>
         </div>
         <div class="tovarInfo">
-            <img src="{{t.photo.url}}">
+            <!-- Слайдер для изображений -->
+            <div class="image-slider">
+                <div class="slider">
+                    <!-- Основная фотография -->
+                    <div class="slide">
+                        <img src="{{ t.photo.url }}" alt="Основное фото товара">
+                    </div>
+                    <!-- Дополнительные фотографии -->
+                    {% for photo in t.photos.all %}
+                        <div class="slide">
+                            <img src="{{ photo.photo.url }}" alt="Фото товара">
+                        </div>
+                    {% endfor %}
+                </div>
+                <button class="prev">&#10094;</button>
+                <button class="next">&#10095;</button>
+                <!-- Индикаторы -->
+                <div class="indicators" id="indicators"></div>
+            </div>
             <ul class="mainInfo">
                 <li class="content">{{t.content}}</li>
                 <hr>
@@ -35,5 +53,49 @@
         </div>
         {% endif %}  
     {% endfor %}
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var slides = document.querySelectorAll('.slide');
+            var indicatorsContainer = document.getElementById('indicators');
+            var currentIndex = 0;
+            var totalSlides = slides.length;
+        
+            // Создание индикаторов
+            for (var i = 0; i < totalSlides; i++) {
+                var indicator = document.createElement('span');
+                indicator.className = 'indicator';
+                indicatorsContainer.appendChild(indicator);
+            }
+        
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    if (i === index) {
+                        slide.classList.add('active'); // Добавить класс active для отображения
+                    } else {
+                        slide.classList.remove('active'); // Убрать класс active для скрытия
+                    }
+                });
+        
+                var indicators = document.querySelectorAll('.indicator');
+                indicators.forEach((indicator, i) => {
+                    indicator.classList.toggle('active', i === index);
+                });
+            }
+        
+            document.querySelector('.next').addEventListener('click', function() {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                showSlide(currentIndex);
+            });
+        
+            document.querySelector('.prev').addEventListener('click', function() {
+                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                showSlide(currentIndex);
+            });
+        
+            // Показать первый слайд по умолчанию
+            showSlide(currentIndex);
+        });
+        </script>
 
 {% endblock %}
