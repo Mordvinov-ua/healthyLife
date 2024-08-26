@@ -33,7 +33,7 @@
                 <div class="indicators" id="indicators"></div>
             </div>
             <ul class="mainInfo">
-                <li class="content">{{t.content}}</li>
+                <li class="content">{{t.content|safe}}</li>
                 <hr>
                 <ul class="price">
                     {% if t.discount != 0 %}

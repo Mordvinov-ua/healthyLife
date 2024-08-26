@@ -65,96 +65,84 @@
   </div>
 </div>
 
-<div class="karusel_sale">
+  <div class="karusel_sale">
 
-  <ul class="nav nav-tabs nav_sale">
-    <a id="salenav"></a>
-    {% for i in sale_cat %}
-    {% if value == i.pk %}
-    <li class="nav-item" style="background-color: rgb(84, 121, 40);">
-      <a class="nav-link active" id="active_sale" aria-current="page" href="{{i.get_absolute_url}}#salenav">{{i}}</a>
-    </li>
-    {% else %}
-    <li class="nav-item">
-      <a class="nav-link link_sale" href="{{i.get_absolute_url}}#salenav">{{i}}</a>
-    </li>
-    {% endif %}
-    {% endfor %}
+    <ul class="nav nav-tabs nav_sale">
+      <a id="salenav"></a>
+      {% for i in sale_cat %}
+      {% if value == i.pk %}
+      <li class="nav-item" style="background-color: rgb(84, 121, 40);">
+        <a class="nav-link active" id="active_sale" aria-current="page" href="?category={{i.pk}}#salenav">{{i}}</a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link link_sale" href="?category={{i.pk}}#salenav">{{i}}</a>
+      </li>
+      {% endif %}
+      {% endfor %}
+    </ul>
 
-  </ul>
+    <div id="carouselExampleIndicators" style="background-color:  rgb(84, 121, 40);" class="carousel slide">
 
-  <div id="carouselExampleIndicators" style="background-color:  rgb(84, 121, 40);" class="carousel slide">
-
-    <div class="carousel-inner">
-      <div class="carousel-item active" id="platz_sale_cards">
-        {% for i in page_obj %}
-        {% if i.sale_category.pk == value %}
-
-
-        
-        <a class="a_group_cart" href="{% url 'tovar' i.slug %}">
-          <div class="tovarCart">
-            <img class="tovarCartImg" src="{{i.photo.url}}">
-            <div class="infoTovar">
-              <h5 style="color: white;">{{i}}</h5>
-              <p>{{i.content|linebreaks|truncatewords:5}}</p>
-              <ul class="price">
-                {% if i.sale_category.pk == 3 %}
-                <li style="color: white;"><s>{{i.price}} €</s></li>
-                <li style="color: rgb(207, 6, 6);"><b>{{i.price_after_discount|floatformat:2}} €</b></li>
-                {% else %}
-                <li></li>
-                <li style="color: white;"><b>{{i.price}} €</b></li>
-                {% endif %}
-              </ul>
+      <div class="carousel-inner">
+        <div class="carousel-item active" id="platz_sale_cards">
+          {% for i in page_obj %}
+          <a class="a_group_cart" href="{% url 'tovar' i.slug %}">
+            <div class="tovarCart">
+              <img class="tovarCartImg" src="{{i.photo.url}}">
+              <div class="infoTovar">
+                <h5 style="color: white;">{{i}}</h5>
+                <ul class="price">
+                  {% if i.sale_category.pk == 3 %}
+                    <li style="color: white;"><s>{{i.price}} €</s></li>
+                    <li style="color: rgb(207, 6, 6);"><b>{{i.price_after_discount|floatformat:2}} €</b></li>
+                  {% else %}
+                    <li></li>
+                    <li style="color: white;"><b>{{i.price}} €</b></li>
+                  {% endif %}
+                </ul>
+              </div>
+              <div class="but_buy">
+                <a class="button_buy_in_click" href="#">buy in click</a>
+                <a class="button_buy_korb add-to-cart" href="{% url "cart_add" %}" data-product-id="{{ i.id }}">
+                    {% csrf_token %}
+                    <img class="add_in_korb" src="{% static 'images/korb_add.png' %}">
+                </a>
+              </div>
             </div>
-            <div class="but_buy">
-              <a class="button_buy_in_click" href="#">buy in click</a>
-              <a class="button_buy_korb add-to-cart" href="{% url "cart_add" %}" data-product-id="{{ i.id }}">
-                  {% csrf_token %}
-                  <img class="add_in_korb" src="{% static 'images/korb_add.png' %}">
-              </a>
-            </div>
-          </div>
-        </a>
-        {% endif %}
-        {% endfor %}
-
-
-
-
-      </div>
-      <div class="carousel-indicators" style="margin-left: 0;">
-          {% for page in page_obj.paginator.page_range %}
-
-          {% if page_obj.number == page %}
-          <button type="button" data-bs-target="#carouselExampleIndicators" href="?page={{page}}#salenav" class="active"
-            aria-current="true" aria-label="Slide {{page}}"></button>
-          {% else %}
-          <a type="button" data-bs-target="#carouselExampleIndicators" href="?page={{page}}#salenav"
-            aria-label="Slide {{page}}"></a>
-          {% endif %}
-
+          </a>
           {% endfor %}
         </div>
-      {% if page_obj.has_previous %}
-      <a class="carousel-control-prev" style="width: 60px;" type="button" data-bs-target="#carouselExampleIndicators"
-        href="?page={{ page_obj.previous_page_number }}#salenav">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </a>
-      {% endif %}
-      {% if page_obj.has_next %}
-      <a class="carousel-control-next" style="width: 60px;" type="button" data-bs-target="#carouselExampleIndicators"
-        href="?page={{ page_obj.next_page_number }}#salenav">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </a>
-      {% endif %}
 
+        <div class="carousel-indicators" style="margin-left: 0;">
+            {% for page in page_obj.paginator.page_range %}
+            {% if page_obj.number == page %}
+            <button type="button" data-bs-target="#carouselExampleIndicators" href="?page={{page}}&category={{value}}#salenav" class="active"
+              aria-current="true" aria-label="Slide {{page}}"></button>
+            {% else %}
+            <a type="button" data-bs-target="#carouselExampleIndicators" href="?page={{page}}&category={{value}}#salenav"
+              aria-label="Slide {{page}}"></a>
+            {% endif %}
+            {% endfor %}
+        </div>
+
+        {% if page_obj.has_previous %}
+        <a class="carousel-control-prev" style="width: 60px;" type="button" data-bs-target="#carouselExampleIndicators"
+          href="?page={{ page_obj.previous_page_number }}&category={{value}}#salenav">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </a>
+        {% endif %}
+        {% if page_obj.has_next %}
+        <a class="carousel-control-next" style="width: 60px;" type="button" data-bs-target="#carouselExampleIndicators"
+          href="?page={{ page_obj.next_page_number }}&category={{value}}#salenav">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </a>
+        {% endif %}
+      </div>
     </div>
   </div>
-</div>
 
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

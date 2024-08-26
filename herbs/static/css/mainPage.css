@@ -86,43 +86,8 @@ video{
     position: relative;
     width: 100%;
 }
-#platz_sale_cards{
-    display: flex;
-    justify-content: center;
-    margin-bottom: 3em;
-}
 .carousel-indicators{
     width: 100%;
-}
-.price{
-    display: flex;
-    justify-content: space-between;
-    list-style: none;
-    padding-left: 0;
-    padding-right: 1em;
-
-}
-.but_buy{
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 1em;
-    margin-bottom: 1em;
-}
-.sale_cart{
-    display: inline-block;
-    margin: 1em;
-    width: 260px;
-    border-radius: 16px;
-    border: 1px solid white;
-    background-color: rgb(126, 175, 65, 1);
-    overflow: hidden;
-}
-.sale_cart_img{
-    width: 100%;
-    padding: 0;
-}
-.info_sale>p{
-    color: white;
 }
 .nav_sale{
     background-color: rgb(126, 175, 65, 1);
@@ -147,22 +112,6 @@ video{
 .info_sale{
     margin-left: 1em;
     margin-top: 1em;
-}
-.button_buy{
-    background-color: rgb(84, 121, 40);
-    text-align: center;
-    text-decoration: none;
-    color: white;
-    border-radius: 16px;
-}
-.sale_cart:hover{
-    transform: scale(1.02);
-}
-.but_buy:hover{
-    transform: scale(1.02);
-}
-.a_sale_cart{
-    text-decoration: none;
 }
 @media (max-width: 990px) {
     .video_text{

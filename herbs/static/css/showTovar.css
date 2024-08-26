@@ -47,6 +47,11 @@
 .breadcrumb-item:hover{
     transform: scale(1.05);
 }
+#platz_sale_cards{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 .tovar_platz{
     display: flex;
     justify-content: center;
@@ -69,18 +74,24 @@
     height: auto;
     margin: 1vw;
     margin-bottom: 0;
+    background-color: white;
 }
 .infoTovar{
     margin: 1em;
     margin-bottom: 0em;
 }
-.infoTovar h5{
-    font-size: 2vw;
+.infoTovar>h5 {
+    font-size: 150%;
     border-bottom: 1px solid;
     margin-bottom: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    display: -webkit-box;          /* Используется для создания контейнера flexbox */
+    -webkit-box-orient: vertical;  /* Устанавливает вертикальную ориентацию flexbox */
+    -webkit-line-clamp: 3;         /* Ограничивает текст тремя строками */
+    overflow: hidden;              /* Скрывает содержимое, выходящее за пределы блока */
+    text-overflow: ellipsis;       /* Добавляет многоточие для скрытого текста */
+    white-space: normal;           /* Позволяет переносить строки (в отличие от nowrap) */
+    line-height: 1.5;  /* Устанавливает высоту строки, чтобы точно рассчитывать высоту контейнера */
+    height: calc(1.5em * 3);  /* Задает высоту контейнера, равную высоте трех строк */
 }
 .infoTovar>p{
     font-size: 1.2vw;

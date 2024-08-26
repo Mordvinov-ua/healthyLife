@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'carts.apps.CartsConfig',
     'orders.apps.OrdersConfig',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -145,3 +147,9 @@ LOGIN_URL = "/login/"
 
 AUTH_USER_MODEL = "users.User"
 
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+    },
+}

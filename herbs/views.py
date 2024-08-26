@@ -5,14 +5,31 @@ from .models import *
 from django.core.paginator import Paginator
 
 
+
 def mainPage(request):
-    contact_list = Tovar.objects.all()
-    paginator = Paginator(contact_list, 6)
+    # Получаем выбранную категорию из GET-параметра или используем категорию с pk=3 по умолчанию
+    category_id = request.GET.get('category', 3)
+    
+    try:
+        selected_category = Sale_category.objects.get(pk=category_id)
+    except Sale_category.DoesNotExist:
+        selected_category = Sale_category.objects.get(pk=3)
+    
+    # Фильтруем товары по выбранной категории
+    contact_list = Tovar.objects.filter(sale_category=selected_category)
+    
+    # Пагинация - по 4 товару на страницу
+    paginator = Paginator(contact_list, 4)
 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-    return render(request, 'mainPage.html', {'page_obj':page_obj, 'value':3})
+    # Передаем категорию и список товаров в шаблон
+    return render(request, 'mainPage.html', {
+        'page_obj': page_obj,
+        'value': selected_category.pk,  # Передаем ID выбранной категории
+        'sale_cat': Sale_category.objects.all()  # Передаем все категории
+    })
 
 def sale_cat(request, sale_cat_id):
     # Получаем категорию распродажи по ID

@@ -5,8 +5,7 @@
     position: relative;
     width: 100%;
     max-width: 600px;
-    margin: auto;
-    margin-bottom: 1em;
+    margin-bottom: auto;
 }
 .slider {
     position: relative;

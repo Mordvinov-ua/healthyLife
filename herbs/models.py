@@ -1,9 +1,10 @@
 from django.db import models
 from django.urls import reverse
+from ckeditor_uploader.fields import RichTextUploadingField
 
 class Tovar(models.Model):
     title = models.CharField(max_length=200)
-    content = models.TextField(blank=True)
+    content = RichTextUploadingField(blank=True)
     photo = models.ImageField(upload_to='photo/tovar/')
     price = models.DecimalField(max_digits=6, decimal_places=2)
     time_create = models.DateTimeField(auto_now_add= True)
