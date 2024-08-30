@@ -121,6 +121,65 @@ video{
         transform:none;
     }
 }
+.certifikates_tittle{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(126, 175, 65, 1);
+    margin: 0;
+    color: white;
+    font-size: 2.5vw;
+}
+
+.certificate {
+    max-width: 100%;
+    margin: auto;
+}
+
+.owl-carousel .item {
+    position: relative;
+    padding: 10px;
+}
+.gallery-item img{
+    border-radius: 16px;
+    border: 1px solid rgb(84, 121, 40);
+}
+.owl-carousel .item img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.certificate__carousel{
+    background-color: #f9fafc;
+    padding-left: 3em;
+    padding-right: 3em;
+}
+
+/* Стиль для стрелок навигации */
+.owl-prev, .owl-next {
+    background-color: white;
+    color: #fff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.owl-prev {
+    left: 10px;
+}
+
+.owl-next {
+    right: 10px;
+}
+
+.owl-prev span, .owl-next span{
+    color: rgb(84, 121, 40);
+}
+
 @media (max-width: 860px) {
     .video_text{
         top: 21em;
@@ -154,6 +213,9 @@ video{
     .about_img a img{
         width: 10vw;
         
+    }
+    .certifikates_tittle{
+        font-size: 4vw;
     }
     .about_text_special>p{
         display: none;

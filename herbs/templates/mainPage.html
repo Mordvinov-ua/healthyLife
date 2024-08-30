@@ -6,6 +6,14 @@
 <link rel="stylesheet" href="{% static 'css/mainPage.css' %}" type="text/css">
 <link rel="stylesheet" href="{% static 'css/showTovar.css' %}" type="text/css">
 
+<!-- Подключение Owl Carousel -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/assets/owl.theme.default.min.css">
+<script src="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/owl.carousel.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+
 <div class="videofon">
   <video src="{% static 'video/video.mp4' %}" type="video/mp4" autoplay muted loop></video>
   
@@ -143,6 +151,83 @@
       </div>
     </div>
   </div>
+  <h1 class="certifikates_tittle">Our certificates of conformity and awards</h1>
+  <div class="certificate">
+    <div class="certificate__carousel owl-carousel owl-theme">
+        <div class="item">
+            <a class="gallery-item" href="{% static 'images/sert1.jpg' %}">
+                <img src="{% static 'images/sert1.jpg' %}" alt="Certificate Image">
+            </a>
+        </div>
+        <div class="item">
+            <a class="gallery-item" href="{% static 'images/sert2.jpg' %}">
+                <img src="{% static 'images/sert2.jpg' %}" alt="Certificate Image">
+            </a>
+        </div>
+        <div class="item">
+            <a class="gallery-item" href="{% static 'images/sert3.jpg' %}">
+                <img src="{% static 'images/sert3.jpg' %}" alt="Certificate Image">
+            </a>
+        </div>
+        <div class="item">
+          <a class="gallery-item" href="{% static 'images/medok1.jpg' %}">
+              <img src="{% static 'images/medok1.jpg' %}" alt="Certificate Image">
+          </a>
+      </div>
+      <div class="item">
+          <a class="gallery-item" href="{% static 'images/medok2.jpg' %}">
+              <img src="{% static 'images/medok2.jpg' %}" alt="Certificate Image">
+          </a>
+      </div>
+      <div class="item">
+          <a class="gallery-item" href="{% static 'images/medok3.jpg' %}">
+              <img src="{% static 'images/medok3.jpg' %}" alt="Certificate Image">
+          </a>
+      </div>
+      <div class="item">
+          <a class="gallery-item" href="{% static 'images/iso_eng.jpg' %}">
+              <img src="{% static 'images/iso_eng.jpg' %}" alt="Certificate Image">
+          </a>
+      </div>
+      <div class="item">
+          <a class="gallery-item" href="{% static 'images/visnovok_poroshk.jpg' %}">
+              <img src="{% static 'images/visnovok_poroshk.jpg' %}" alt="Certificate Image">
+          </a>
+      </div>
+    </div>
+  </div>
+  <h1 class="certifikates_tittle">&nbsp;</h1>
+  <script>
+    $(document).ready(function(){
+        $(".owl-carousel").owlCarousel({
+          items: 5, // Количество отображаемых элементов
+          loop: true,
+          margin: 10,
+          nav: true,
+          responsive: {
+              0: {
+                  items: 2
+              },
+              600: {
+                  items: 3
+              },
+              1000: {
+                  items: 5
+              }
+          }
+      });
+    });
+  </script>
+  <script>
+    $(document).ready(function() {
+        $('.gallery-item').magnificPopup({
+            type: 'image',
+            gallery: {
+                enabled: true
+            }
+        });
+    });
+  </script>
 
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
