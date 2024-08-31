@@ -11,7 +11,7 @@ class Tovar(models.Model):
     discount = models.DecimalField(max_digits=4, decimal_places=2, default=0.0, help_text="Discount in percentage")
     time_update = models.DateTimeField(auto_now= True)
     is_published = models.BooleanField(default=True)
-    group = models.ForeignKey('Group', on_delete=models.PROTECT)
+    group = models.ManyToManyField('Group', related_name="tovars")
     sale_category = models.ForeignKey('Sale_category', on_delete=models.PROTECT, null=True, blank=True)
     slug = models.SlugField(max_length=100, db_index=True, unique=True, verbose_name='Url')
     quantity = models.PositiveIntegerField(default=0,)
@@ -39,6 +39,7 @@ class TovarPhoto(models.Model):
         verbose_name = 'Фото товара'
         verbose_name_plural = 'Фото товаров'
         ordering = ('id',)
+
 
 class Group(models.Model):
     photo = models.ImageField(upload_to='photo/group/')

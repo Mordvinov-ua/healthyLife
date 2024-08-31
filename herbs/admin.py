@@ -24,10 +24,11 @@ admin.site.register(Group, GroupAdmin)
 class TovarPhotoInline(admin.TabularInline):
     model = TovarPhoto
     extra = 1
+    
 
 class TovarAdmin(admin.ModelAdmin):
-    list_display = ('title','group','time_create','time_update','is_published',)
-    list_display_links = ('title','group',)
+    list_display = ('title','time_create','time_update','is_published',)
+    list_display_links = ('title',)
     search_fields = ('title','group','sale_category',)
     list_editable = ('is_published',)
     list_filter = ('group','time_create','time_update','is_published','sale_category')
