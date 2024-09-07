@@ -6,25 +6,30 @@ class Tovar(models.Model):
     title = models.CharField(max_length=200)
     content = RichTextUploadingField(blank=True)
     photo = models.ImageField(upload_to='photo/tovar/')
-    price = models.DecimalField(max_digits=6, decimal_places=2)
+    price = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
     time_create = models.DateTimeField(auto_now_add= True)
-    discount = models.DecimalField(max_digits=4, decimal_places=2, default=0.0, help_text="Discount in percentage")
     time_update = models.DateTimeField(auto_now= True)
     is_published = models.BooleanField(default=True)
     group = models.ManyToManyField('Group', related_name="tovars")
     sale_category = models.ForeignKey('Sale_category', on_delete=models.PROTECT, null=True, blank=True)
     slug = models.SlugField(max_length=100, db_index=True, unique=True, verbose_name='Url')
     quantity = models.PositiveIntegerField(default=0,)
+    tovar_variations = models.ManyToManyField('TovarVariation', related_name='tovars', blank=True)
 
     def __str__(self):
         return self.title
     
     def get_absolute_url(self):
         return reverse('tovar', kwargs={'tovar_slug':self.slug})
-
-    def price_after_discount(self):
-        discount_amount = (self.discount / 100) * self.price
-        return self.price - discount_amount
+    
+    def get_price(self, variation_id=None):
+        if variation_id:
+            try:
+                variation = self.tovar_variations.get(id=variation_id)
+                return variation.price_after_discount()
+            except TovarVariation.DoesNotExist:
+                return self.price
+        return self.price
 
     class Meta:
         verbose_name = 'Товар'
@@ -40,6 +45,22 @@ class TovarPhoto(models.Model):
         verbose_name_plural = 'Фото товаров'
         ordering = ('id',)
 
+class TovarVariation(models.Model):
+    tovar = models.ForeignKey(Tovar, related_name='variations', on_delete=models.CASCADE)
+    size = models.CharField(max_length=100,)
+    price = models.DecimalField(max_digits=8, decimal_places=2)
+    discount = models.DecimalField(max_digits=4, decimal_places=2, default=0.0, help_text="Discount in percentage")
+
+    def price_after_discount(self):
+        discount_amount = (self.discount / 100) * self.price
+        return self.price - discount_amount
+
+    def __str__(self):
+        return f"{self.size} - {self.price} $"
+
+    class Meta:
+        verbose_name = 'Вариант товара'
+        verbose_name_plural = 'Варианты товаров'
 
 class Group(models.Model):
     photo = models.ImageField(upload_to='photo/group/')

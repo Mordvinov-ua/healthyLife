@@ -1,5 +1,5 @@
 from django.db import models
-from herbs.models import Tovar
+from herbs.models import Tovar, TovarVariation
 from users.models import User
 
 class  CartQueryset(models.QuerySet):
@@ -19,6 +19,7 @@ class Cart(models.Model):
     product = models.ForeignKey(to=Tovar, on_delete=models.CASCADE, verbose_name="Product")
     quantity = models.PositiveSmallIntegerField(default=0, verbose_name="Quantity")
     session_key = models.CharField(max_length=32, blank=True, null=True)
+    variation = models.ForeignKey(TovarVariation, on_delete=models.SET_NULL, null=True, blank=True)
     created_timestamp = models.DateTimeField(auto_now_add=True, verbose_name="timestamp")
 
     class Meta:
@@ -28,12 +29,19 @@ class Cart(models.Model):
 
     objects = CartQueryset().as_manager()
 
+
     def products_price(self):
-        if self.product.discount:
+        '''if self.product.discount:
             self.product.price_after_discount = self.product.price * (1 - self.product.discount / 100)
             return round(self.product.price_after_discount * self.quantity, 2)
         else:
-            return round(self.product.price * self.quantity, 2)
+        return round(self.product.price * self.quantity, 2)'''
+        if self.variation:
+            price = self.variation.price
+        else:
+            price = self.product.price
+        return round(price * self.quantity, 2)
+        
 
     def __str__(self):
         if self.user:

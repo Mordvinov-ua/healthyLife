@@ -9,12 +9,16 @@ $(document).ready(function () {
      $(document).on("click", ".add-to-cart", function (e) {
          // Блокируем его базовое действие
          e.preventDefault();
+         console.log("JavaScript начал свою работу");
 
-         // Получаем id товара из атрибута data-product-id
+         // Получаем id товара из атрибута data-product-id и data-variation-id
          var product_id = $(this).data("product-id");
-
+         console.log("ID товара:", product_id);
+         var variation_id = $(this).data("variation-id");
+         console.log("ID вариации:", variation_id);
          // Из атрибута href берем ссылку на контроллер django
          var add_to_cart_url = $(this).attr("href");
+
 
          // делаем post запрос через ajax не перезагружая страницу
          $.ajax({
@@ -22,7 +26,8 @@ $(document).ready(function () {
              url: add_to_cart_url,
              data: {
                 product_id: product_id,
-                 csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(),
+                variation_id: variation_id,
+                csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(),
              },
              success: function (data) {
                  // Сообщение

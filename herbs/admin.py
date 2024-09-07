@@ -24,7 +24,10 @@ admin.site.register(Group, GroupAdmin)
 class TovarPhotoInline(admin.TabularInline):
     model = TovarPhoto
     extra = 1
-    
+
+class TovarVariationInline(admin.TabularInline):
+    model = TovarVariation
+    extra = 1 
 
 class TovarAdmin(admin.ModelAdmin):
     list_display = ('title','time_create','time_update','is_published',)
@@ -33,7 +36,7 @@ class TovarAdmin(admin.ModelAdmin):
     list_editable = ('is_published',)
     list_filter = ('group','time_create','time_update','is_published','sale_category')
     prepopulated_fields = {"slug":("title",)}
-    inlines = [TovarPhotoInline]
+    inlines = [TovarPhotoInline, TovarVariationInline]
 
 admin.site.register(Tovar, TovarAdmin)
 
