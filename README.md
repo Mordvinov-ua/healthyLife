@@ -24,5 +24,6 @@ Dies ist ein vollständig funktionsfähiger Online-Shop, der mit Django entwicke
 - **Datenbank**:
   - PostgreSQL 
 ## Projekt lokal ausführen: 
-1. Klone das Repository:```bash git clone https://github.com/username/online_store_django.git
-2. 
+1. Klone das Repository:
+```bash git clone https://github.com/username/online_store_django.git
+2.
