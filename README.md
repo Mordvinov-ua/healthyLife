@@ -12,7 +12,17 @@ Dies ist ein vollständig funktionsfähiger Online-Shop, der mit Django entwicke
 - **Fortlaufende Optimierungen**:
   - Geschwindigkeitsoptimierung der Seitenladezeit
   - Integration von Zahlungssystem
-## Технологии: - Python 3 - Django - HTML, CSS, JavaScript - PostgreSQL - Bootstrap - Docker (если использовался) 
-## Как запустить проект: 
-1. Клонируйте репозиторий: ```bash git clone https://github.com/username/online_store_django.git
+## Technologien:
+- **Backend**:
+  - Python
+  - Django
+- **Frontend**:
+  - HTML
+  - CSS
+  - JavaScript
+  - Bootstrap
+- **Datenbank**:
+  - PostgreSQL 
+## Projekt lokal ausführen: 
+1. Klone das Repository:```bash git clone https://github.com/username/online_store_django.git
 2. 
