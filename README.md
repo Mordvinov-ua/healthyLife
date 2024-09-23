@@ -29,6 +29,6 @@ Dies ist ein vollständig funktionsfähiger Online-Shop, der mit Django entwicke
 2. Installiere die Abhängigkeiten:  
 ```pip install -r requirements.txt```  
 3. Führe die Migrationen aus:  
-```python manage.py migrate```  
-4.Starte den Server:  
+```python manage.py migrate```
+4. Starte den Server:  
 ```python manage.py runserver```  
