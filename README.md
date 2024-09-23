@@ -27,3 +27,8 @@ Dies ist ein vollständig funktionsfähiger Online-Shop, der mit Django entwicke
 1. Klone das Repository:
 ```bash git clone https://github.com/username/online_store_django.git```
 2. Installiere die Abhängigkeiten:
+```pip install -r requirements.txt```
+3. Führe die Migrationen aus:
+```python manage.py migrate```
+4.Starte den Server:
+```python manage.py runserver```
