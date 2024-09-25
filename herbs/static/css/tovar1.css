@@ -6,6 +6,7 @@
     width: 100%;
     max-width: 600px;
     margin-bottom: auto;
+    margin-top: 1em;
 }
 .slider {
     position: relative;
@@ -19,6 +20,11 @@
     display: flex; /* Отображать только активный слайд как flex-контейнер */
     justify-content: center; /* Выравнивание содержимого по центру */
     align-items: center; /* Выравнивание содержимого по центру вертикально */
+    background-color: white;
+    margin-left: 1em;
+    margin-right: 0.7em;
+    border-radius: 4px; /* Если хотите немного закруглить углы */
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.3); /* Настраиваем тень */
 }
 
 .slide>img{
@@ -44,10 +50,10 @@ button.prev, button.next {
     transition: background 0.3s ease, color 0.3s ease;
 }
 button.prev {
-    left: 10px;
+    left: 30px;
 }
 button.next {
-    right: 10px;
+    right: 30px;
 }
 button.prev:hover, button.next:hover {
     background: rgb(126, 175, 65, 1); /* Более темный фон при наведении */
@@ -69,9 +75,14 @@ button.prev:hover, button.next:hover {
     background-color: #717171;
 }
 .tovarName{
-    margin-left: 2em;
-    margin-top: 1em;
-    color: rgb(126, 175, 65, 1);
+    background-color: white;
+    border-radius: 4px; /* Если хотите немного закруглить углы */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Настраиваем тень */
+    margin-bottom: 0.7em;
+}
+.tovarName h1{
+    margin: 0;
+    padding: 0.1em;
 }
 .tovarPage{
     background-color: rgb(84, 121, 40);
@@ -79,8 +90,32 @@ button.prev:hover, button.next:hover {
     width: 100%;
 }
 .mainInfo{
+    background-color: rgb(84, 121, 40);
     list-style: none;
-    color: white;
+    margin-top: 1em ;
+    width: 54%;
+    margin-bottom: 2em ;
+}
+.show_price_and_var{
+    display: flex;
+    height: 13.8vw;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 4px; /* Если хотите немного закруглить углы */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Настраиваем тень */
+}
+.kurz_info{
+    background-color: white;
+    border-radius: 4px; /* Если хотите немного закруглить углы */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Настраиваем тень */
+    margin-top: 0.7em;
+}
+.kurz_info ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding-right: 2em;
 }
 .salePrice{
     display: flex;
@@ -89,11 +124,32 @@ button.prev:hover, button.next:hover {
 }
 .price{
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     list-style: none;
     padding-left: 0;
     padding-right: 1em;
     font-size: 200%;
+    padding-left: 0.1vw;
+}
+#old-price{
+
+    color: #999;
+    text-decoration: line-through; 
+    font-size: 0.3em; 
+    margin-top: 1em;
+    margin-left: 0.7em;
+    margin-bottom: -1.5em;
+}
+#price{
+    margin-left: 0.1em;
+    font-size: 0.8em;
+}
+#econom_info{
+    color:rgb(126, 175, 65, 1);
+    font-size: 0.3em;
+    margin-left: 0.5em;
+    margin-top: -1.2em;
 }
 .content{
     font-size: large;
@@ -109,6 +165,8 @@ button.prev:hover, button.next:hover {
     padding: 5px;
     margin-right: 33px;
     margin-bottom: 10px;
+    width: 15em;
+    height: 2.8em;
 }
 .button_buy_in_click{
     background-color: rgb(126, 175, 65, 1);
@@ -127,17 +185,41 @@ button.prev:hover, button.next:hover {
 .add_in_korb{
     max-width: 30px;
 }
+.add-in-corb-text {
+    margin: auto;
+    margin: 0.5em;
+}
+
 .but_buy{
-    width: 100%;
     display: flex;
     justify-content: left;
     align-items: center;
+    margin-left: 0.5em;
+    margin-top: -0.3em;
 }
 .button_buy_in_click:hover{
     transform: scale(1.05);
 }
 .button_buy_korb:hover{
     transform: scale(1.05);
+}
+.var_platz{
+    margin-top: 1.5em;
+    margin-right: 3em;
+}
+.accordion_platz{
+    background-color: rgb(84, 121, 40);
+}
+.accordion{
+    margin: 1em;
+}
+.accordion-button:focus{
+    outline: none;
+    box-shadow: none;
+}
+.accordion-button:not(.collapsed) {
+    background-color: rgb(126, 175, 65, 1); 
+    color: white; 
 }
 @media (max-width: 800px) {
     .tovarInfo{

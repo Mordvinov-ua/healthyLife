@@ -29,15 +29,14 @@ class Cart(models.Model):
 
     objects = CartQueryset().as_manager()
 
+    def price(self):
+        if self.variation:
+            return self.variation.price_after_discount()
+        return self.product.price
 
     def products_price(self):
-        '''if self.product.discount:
-            self.product.price_after_discount = self.product.price * (1 - self.product.discount / 100)
-            return round(self.product.price_after_discount * self.quantity, 2)
-        else:
-        return round(self.product.price * self.quantity, 2)'''
         if self.variation:
-            price = self.variation.price
+            price = self.variation.price_after_discount()
         else:
             price = self.product.price
         return round(price * self.quantity, 2)

@@ -88,6 +88,28 @@ def search(request,):
     
     return render (request, 'search.html', {'page_obj':page_obj,},)
 
-def tovar (request, tovar_slug,):
-    return render (request, 'tovar.html', {'slug':tovar_slug})
+
+def tovar  (request, tovar_slug,):
+    tovar = get_object_or_404(Tovar, slug=tovar_slug)
+    variations = tovar.tovar_variations.all()
+
+    # Создание словаря с информацией 
+    variations_with_discount = [
+        {      
+            'id': variation.id,
+            'size': variation.size,
+            'price': variation.price,
+            'discount': variation.discount,
+            'price_after_discount': variation.price_after_discount(),
+        }
+        for variation in variations
+    ]
+
+    context = {
+        'tovar': tovar,
+        'variations_with_discount': variations_with_discount,
+        'slug':tovar_slug,
+    }
+    
+    return render  (request, 'tovar.html', context)
 

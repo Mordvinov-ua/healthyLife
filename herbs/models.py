@@ -2,9 +2,20 @@ from django.db import models
 from django.urls import reverse
 from ckeditor_uploader.fields import RichTextUploadingField
 
+
+
 class Tovar(models.Model):
     title = models.CharField(max_length=200)
     content = RichTextUploadingField(blank=True)
+    product_benefits= RichTextUploadingField(blank=True)
+    ingredients = RichTextUploadingField(blank=True)
+    usage_instructions = RichTextUploadingField(blank=True)
+    condition_of_product = models.CharField(max_length=100,blank=True, null=True)
+    main_purpose = models.CharField(max_length=100,blank=True, null=True)
+    active_ingredients = models.CharField(max_length=100,blank=True, null=True)
+    department = models.CharField(max_length=100,blank=True, null=True)
+    expiration_date = models.CharField(max_length=100,blank=True, null=True)
+    region_of_manufacture = models.CharField(max_length=100,blank=True, null=True)
     photo = models.ImageField(upload_to='photo/tovar/')
     price = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
     time_create = models.DateTimeField(auto_now_add= True)
@@ -14,8 +25,8 @@ class Tovar(models.Model):
     sale_category = models.ForeignKey('Sale_category', on_delete=models.PROTECT, null=True, blank=True)
     slug = models.SlugField(max_length=100, db_index=True, unique=True, verbose_name='Url')
     quantity = models.PositiveIntegerField(default=0,)
-    tovar_variations = models.ManyToManyField('TovarVariation', related_name='tovars', blank=True)
-
+    tovar_variations = models.ManyToManyField('TovarVariation', related_name='tovars', blank=True, default=1)
+    
     def __str__(self):
         return self.title
     
@@ -30,6 +41,15 @@ class Tovar(models.Model):
             except TovarVariation.DoesNotExist:
                 return self.price
         return self.price
+    
+    def variation_info(self, variation_id=None):
+        if variation_id:
+            try:
+                variation = self.tovar_variations.get(id=variation_id)
+                return variation.size
+            except TovarVariation.DoesNotExist:
+                return None
+        return None
 
     class Meta:
         verbose_name = 'Товар'

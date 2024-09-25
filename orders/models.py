@@ -33,6 +33,7 @@ class OrderItem(models.Model):
     order = models.ForeignKey(to=Order, on_delete=models.CASCADE, verbose_name='Order')
     product = models.ForeignKey(Tovar, on_delete=models.SET_DEFAULT, null=True, verbose_name='Product', default=None)
     name = models.CharField(max_length=150, verbose_name='Name')
+    size = models.CharField(max_length=100, blank=True, null=True, verbose_name='Size')
     price = models.DecimalField(max_digits=7, decimal_places=2, verbose_name='Price')
     quantity = models.PositiveIntegerField(default=0, verbose_name='Quantity')
     created_timestamp = models.DateTimeField(auto_now_add=True, verbose_name="Date of sale")

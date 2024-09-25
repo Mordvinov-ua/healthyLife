@@ -1,3 +1,4 @@
+
 {% extends 'index.html' %}
 {% load static %}
 
@@ -9,9 +10,6 @@
 
     {% for t in tov %}
         {% if t.slug == slug %}
-        <div class="tovarName">
-           <h1>{{ t }}</h1>
-        </div>
         <div class="tovarInfo">
             <!-- Слайдер для изображений -->
             <div class="image-slider">
@@ -32,168 +30,114 @@
                 <!-- Индикаторы -->
                 <div class="indicators" id="indicators"></div>
             </div>
-            <ul class="mainInfo">
-                <li class="content">{{ t.content|safe }}</li>
-                <hr>
-                <!-- Выпадающий список для выбора варианта товара -->
-                <label for="variation">Выберите объем:</label>
-                <select id="variation" name="variation">
-                    {% for variation in t.variations.all %}
-                        <option value="{{ variation.id }}" data-price="{{ variation.price }}">
-                            {{ variation.size }}
-                        </option>
-                    {% endfor %}
-                </select>
+            <div class="mainInfo">
+                <div class="tovarName">
+                    <h1>{{ t }}</h1>
+                </div>
 
-                <!-- Отображение цены -->
-                <ul class="price">
-                    {% if t.discount != 0 %}
-                        <li style="color: white;"><b><span id="price">{{ t.variations.first.price_after_discount|floatformat:2 }}</span> €</b></li>
-                        <li style="color: white;"><s>{{ t.variations.first.price }} €</s></li>
-                    {% else %}
-                        <li style="color: white;"><b><span id="price">{{ t.variations.first.price }}</span> €</b></li>
-                    {% endif %}
-                </ul> 
-                <!-- Скрытое поле для хранения ID товара и CSRF-токена -->
-                <input type="hidden" id="product-id" value="{{ t.id }}">
-                
-            </ul> 
+                <div class="show_price_and_var">
+                    <!-- Отображение цены -->
+                    <div class="price_platz">
+                        <ul class="price">
+                            <ul class="price">
+                                    <li id="old-price" style="display: none;"><span></span>$</li>
+                                    <li><span id="price">{{ variations_with_discount.0.price_after_discount|floatformat:2 }}</span></li>
+                                    <li id="econom_info" style="display: none;"><span></span></li>
+                            </ul>
+                        </ul> 
+                        <!-- Скрытое поле для хранения ID товара и CSRF-токена -->
+                        <input type="hidden" id="product-id" value="{{ t.id }}">
+                        <div class="but_buy">
+                            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+                            <!-- Кнопка будет создана динамически -->
+                        </div>
+                    </div>
+                    <!-- Выпадающий список для выбора варианта товара -->
+                    <div class="var_platz">
+                        <label for="variation">Choose size:</label>
+                        <select id="variation" name="variation">
+                            {% for variation in variations_with_discount %}
+                                <option value="{{ variation.id }}" data-price="{{ variation.price|floatformat:2 }}" data-sellprice="{{variation.price_after_discount|floatformat:2}}">
+                                    {{ variation.size }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
 
-            <div class="but_buy">
-                <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-                <!-- Кнопка будет создана динамически -->
+                <div class="kurz_info">
+                    <ul style="background-color: rgba(126, 175, 65, 0.2);">
+                        <li>Condition</li>
+                        <li>{{ t.condition_of_product }}</li>
+                    </ul>
+                    <ul>
+                        <li>Main Purpose</li>
+                        <li>{{ t.main_purpose }}</li>
+                    </ul>
+                    <ul style="background-color: rgba(126, 175, 65, 0.2);">
+                        <li>Active Ingredients</li>
+                        <li>{{ t.active_ingredients }}</li>
+                    </ul>
+                    <ul>
+                        <li>Department</li>
+                        <li>{{ t.department }}</li>
+                    </ul>
+                    <ul style="background-color: rgba(126, 175, 65, 0.2);">
+                        <li>Expiration Date</li>
+                        <li>{{ t.expiration_date }}</li>
+                    </ul>
+                    <ul>
+                        <li>Country/Region of Manufacture</li>
+                        <li>{{ t.region_of_manufacture }}</li>
+                    </ul>
+                    
+                </div>
+            </div> 
+        </div>
+        <!-- Accordion -->
+        <div class="accordion_platz">
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Benefits of the product
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        {{ t.product_benefits|safe }}
+                    </div>
+                </div>
+                </div>
+                <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Ingredients
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        {{ t.ingredients|safe }}
+                    </div>
+                </div>
+                </div>
+                <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Usage instructions
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        {{ t.usage_instructions|safe }}
+                    </div>
+                </div>
+                </div>
             </div>
-
         </div>
         {% endif %}  
     {% endfor %}
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var variationSelect = document.getElementById('variation');
-            var priceDisplay = document.getElementById('price');
-            var butBuyContainer = document.querySelector('.but_buy'); // контейнер для кнопки "Add to Cart"
-            var productIdInput = document.getElementById('product-id'); // скрытое поле с ID товара
-            var csrfTokenInput = document.querySelector('input[name="csrfmiddlewaretoken"]'); // находим CSRF-токен в шаблоне
-        
-            // Получаем ID товара и CSRF-токен из скрытых полей
-            var productId = productIdInput ? productIdInput.value : '';
-            var csrfToken = csrfTokenInput ? csrfTokenInput.value : '';
-        
-            // Функция для обновления цены и ID вариации
-            function updatePriceAndVariationId() {
-                if (variationSelect && priceDisplay && butBuyContainer) {
-                    var selectedOption = variationSelect.options[variationSelect.selectedIndex];
-                    var newPrice = selectedOption.getAttribute('data-price');
-                    var variationId = selectedOption.value; // ID вариации
-        
-                    // Обновляем цену на странице
-                    priceDisplay.textContent = newPrice;
-        
-                    // Удаляем старую кнопку, если она есть
-                    var oldButton = document.querySelector('.button_buy_korb');
-                    if (oldButton) {
-                        oldButton.remove();
-                    }
-        
-                    // Создаем новую кнопку "Add to Cart"
-                    var newLink = document.createElement('a');
-                    newLink.className = 'button_buy_korb add-to-cart';
-                    newLink.href = '{% url "cart_add" %}';
-                    newLink.setAttribute('data-product-id', productId);
-                    newLink.setAttribute('data-variation-id', variationId);
-        
-                    var img = document.createElement('img');
-                    img.className = 'add_in_korb';
-                    img.src = '{% static "images/korb_add.png" %}';
-        
-                    newLink.appendChild(img);
-                    butBuyContainer.appendChild(newLink);
-        
-                    // Обработчик клика по ссылке
-                    newLink.addEventListener('click', function(event) {
-                        event.preventDefault(); // Отменяем стандартное поведение ссылки
-        
-                        fetch(newLink.href, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRFToken': csrfToken // Добавляем CSRF-токен в заголовок
-                            },
-                            body: JSON.stringify({
-                                product_id: productId,
-                                variation_id: variationId
-                            })
-                        })
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error('Ошибка сети');
-                            }
-                            return response.json();
-                        })
-                        .then(data => {
-                            console.log('Товар добавлен в корзину:', data);
-                        })
-                        .catch(error => {
-                            console.error('Ошибка:', error);
-                        });
-                    });
-        
-                    // Логируем изменения
-                    console.log('Обновленный Data Variation ID:', variationId);
-                    console.log('Обновленный Data Product ID:', productId);
-                }
-            }
-        
-            // Установить начальные значения при загрузке страницы
-            updatePriceAndVariationId();
-        
-            // Обработчик изменения выбора
-            if (variationSelect) {
-                variationSelect.addEventListener('change', updatePriceAndVariationId);
-            }
-
-            // Слайдер
-            var slides = document.querySelectorAll('.slide');
-            var indicatorsContainer = document.getElementById('indicators');
-            var currentIndex = 0;
-            var totalSlides = slides.length;
-
-            // Создание индикаторов
-            for (var i = 0; i < totalSlides; i++) {
-                var indicator = document.createElement('span');
-                indicator.className = 'indicator';
-                indicatorsContainer.appendChild(indicator);
-            }
-
-            function showSlide(index) {
-                slides.forEach((slide, i) => {
-                    if (i === index) {
-                        slide.classList.add('active'); // Добавить класс active для отображения
-                    } else {
-                        slide.classList.remove('active'); // Убрать класс active для скрытия
-                    }
-                });
-
-                var indicators = document.querySelectorAll('.indicator');
-                indicators.forEach((indicator, i) => {
-                    indicator.classList.toggle('active', i === index);
-                });
-            }
-
-            document.querySelector('.next').addEventListener('click', function() {
-                currentIndex = (currentIndex + 1) % totalSlides;
-                showSlide(currentIndex);
-            });
-
-            document.querySelector('.prev').addEventListener('click', function() {
-                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-                showSlide(currentIndex);
-            });
-
-            // Показать первый слайд по умолчанию
-            showSlide(currentIndex);
-        });
-    </script>
+    <script src="{% static "deps/js/show-tovar.js" %}"></script>
 
 {% endblock %}

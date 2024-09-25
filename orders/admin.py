@@ -3,7 +3,7 @@ from orders.models import LandsUndNumbers, Order, OrderItem
 
 class OrderItemTabulareAdmin(admin.TabularInline):
     model = OrderItem
-    fields =  "name", "price", "quantity"
+    fields =  "name", "size", "quantity", 
     search_fields = (
         "product",
         "name",

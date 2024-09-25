@@ -38,11 +38,14 @@ def create_order(request):
 
                             if product.quantity < quantity:
                                 raise ValidationError(f'Insufficient quantity of goods {name}\ In stock {product.quantity}')
-                            
+                            var_info = ""
+                            for simbol in str(cart_item.variation):
+                                var_info += simbol
                             OrderItem.objects.create(
                                 order=order,
                                 product=product,
                                 name=name,
+                                size=var_info,
                                 price=price,
                                 quantity=quantity,
                                 )
