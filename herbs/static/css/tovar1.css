@@ -23,7 +23,7 @@
     background-color: white;
     margin-left: 1em;
     margin-right: 0.7em;
-    border-radius: 4px; /* Если хотите немного закруглить углы */
+    border-radius: 4px; /* немного закруглить углы */
     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.3); /* Настраиваем тень */
 }
 
@@ -76,7 +76,7 @@ button.prev:hover, button.next:hover {
 }
 .tovarName{
     background-color: white;
-    border-radius: 4px; /* Если хотите немного закруглить углы */
+    border-radius: 4px; /*  немного закруглить углы */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Настраиваем тень */
     margin-bottom: 0.7em;
 }
@@ -101,12 +101,14 @@ button.prev:hover, button.next:hover {
     height: 13.8vw;
     justify-content: space-between;
     background-color: white;
-    border-radius: 4px; /* Если хотите немного закруглить углы */
+    border-radius: 4px; /* немного закруглить углы */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Настраиваем тень */
+    overflow: hidden;
+    flex-wrap: nowrap;
 }
 .kurz_info{
     background-color: white;
-    border-radius: 4px; /* Если хотите немного закруглить углы */
+    border-radius: 4px; /*  немного закруглить углы */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Настраиваем тень */
     margin-top: 0.7em;
 }
@@ -116,6 +118,7 @@ button.prev:hover, button.next:hover {
     justify-content: space-between;
     margin: 0;
     padding-right: 2em;
+    font-size: 1.17vw;
 }
 .salePrice{
     display: flex;
@@ -127,29 +130,30 @@ button.prev:hover, button.next:hover {
     flex-direction: column;
     justify-content: space-around;
     list-style: none;
-    padding-left: 0;
     padding-right: 1em;
-    font-size: 200%;
+    font-size: 4vw;
+    flex: 1;
     padding-left: 0.1vw;
 }
 #old-price{
 
     color: #999;
     text-decoration: line-through; 
-    font-size: 0.3em; 
-    margin-top: 1em;
-    margin-left: 0.7em;
-    margin-bottom: -1.5em;
+    font-size: 1.5vw; 
+    margin-top: 1vw;
+    margin-left: 0.4em;
+    margin-bottom: -1.2vw;
 }
 #price{
+    margin-bottom: 0;
     margin-left: 0.1em;
-    font-size: 0.8em;
+    font-size: 4vw;
 }
 #econom_info{
     color:rgb(126, 175, 65, 1);
-    font-size: 0.3em;
-    margin-left: 0.5em;
-    margin-top: -1.2em;
+    font-size: 1.5vw; 
+    margin-left: 0.4em;
+    margin-top: -1.1vw;
 }
 .content{
     font-size: large;
@@ -161,12 +165,13 @@ button.prev:hover, button.next:hover {
     justify-content: center;
     text-decoration: none;
     color: white;
-    border-radius: 16px;
+    border-radius: 4px;
     padding: 5px;
     margin-right: 33px;
     margin-bottom: 10px;
-    width: 15em;
-    height: 2.8em;
+    width: 16vw;
+    height: 3.5vw;
+    font-size: 1.3vw;
 }
 .button_buy_in_click{
     background-color: rgb(126, 175, 65, 1);
@@ -206,6 +211,7 @@ button.prev:hover, button.next:hover {
 .var_platz{
     margin-top: 1.5em;
     margin-right: 3em;
+    font-size: 1.5vw;
 }
 .accordion_platz{
     background-color: rgb(84, 121, 40);
@@ -222,9 +228,69 @@ button.prev:hover, button.next:hover {
     color: white; 
 }
 @media (max-width: 800px) {
+    .tovarName{
+        margin-left: 1em;
+        margin-right: 1em;
+        max-width: 35.8em;
+    }
+    
     .tovarInfo{
         display: flex;
         flex-direction: column;
+        justify-content: center;
+    }
+    .mainInfo{
+        width: 100%;
+    }
+    .show_price_and_var{
+        height: auto;
+        margin-left: 1em;
+        margin-right: 1em;
+        max-width: 35.8em;
+    }
+    #old-price{
+    
+        font-size: medium; 
+        margin-top: 1vw;
+        margin-left: 0.4em;
+        margin-bottom: -1.7vw;
+    }
+    #price{
+        margin-bottom: 0;
+        margin-left: 0.1em;
+        font-size: xx-large;
+    }
+    #econom_info{
+        color:rgb(126, 175, 65, 1);
+        font-size: medium; 
+        margin-left: 0.4em;
+        margin-top: -1.6vw;
+    }
+    .button_buy_korb{
+        padding: 5px;
+        margin-right: 33px;
+        margin-bottom: 10px;
+        width: 15em;
+        height: 3em;
+        font-size: medium;
+    }
+    .kurz_info{
+        margin-left: 1em;
+        margin-right: 1em;
+        max-width: 35.8em;
+        margin-bottom: 0;
+    }
+    .kurz_info ul{
+        font-size: initial;
+    }
+    .var_platz{
+        font-size:  medium;
+    }
+    .accordion{
+        margin-top: 0;
+        margin-left: 1em;
+        margin-right: 1em;
+        max-width: 35.8em;
     }
     .slide>img{
         width: 20em;

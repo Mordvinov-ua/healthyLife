@@ -231,14 +231,21 @@ footer {
     text-align: center;
     margin-bottom: 20px;
 }
-
-.footer-nav a {
-    margin: 0 15px;
-    text-decoration: none;
-    color: #007bff;
+.btn-as-link {
+    background: none;
+    border: none;
     font-weight: bold;
+    padding: 0;
+    color: rgb(84, 121, 40); /* Цвет текста, можно изменить */
+    text-decoration: none; 
+    cursor: pointer;
+    margin-left: 1em;
+
 }
 
+.btn-as-link:hover {
+    color: darkblue; /* Цвет текста при наведении */
+}
 .footer-nav a:hover {
     text-decoration: underline;
 }
@@ -267,8 +274,9 @@ footer {
 }
 
 .footer-column-right {
+    display: flex;
     width: 30%;
-    text-align: right;
+    align-items: flex-end;
 }
 
 .footer-img {
@@ -279,10 +287,10 @@ footer {
     margin-right: 15px;
     margin-bottom: 10px;
 }
-
-.contacts p {
-    margin: 0;
-    text-align: justify;
+.contacts{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .social-icons a {
@@ -296,7 +304,7 @@ footer {
 }
 
 .footer-logo {
-    max-width: 100px;
+    max-width: 12vw;
     height: auto;
 }
 
@@ -357,4 +365,15 @@ footer {
         display: none;
     }
     
+}
+@media (max-width: 800px){
+    .footer-column-right {
+        display: none;
+    }
+    .footer-content{
+        flex-direction: column;
+    }
+    .footer-column-left, .footer-column-center{
+        width: 100%;
+    }
 }

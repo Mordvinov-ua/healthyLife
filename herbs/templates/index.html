@@ -128,9 +128,74 @@
     <footer>
       <footer>
         <nav class="footer-nav">
-            <a href="#">Условия оплаты</a>
-            <a href="#">Условия доставки</a>
-            <a href="#">О нас</a>
+            <!-- Button trigger modal for Условия доставки -->
+            <button type="button" class="btn-as-link" data-bs-toggle="modal" data-bs-target="#deliveryModal">
+                Delivery terms
+            </button>
+            
+            <!-- Modal for Условия доставки -->
+            <div class="modal fade" id="deliveryModal" tabindex="-1" aria-labelledby="deliveryModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="deliveryModalLabel">Delivery terms</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Здесь можно указать условия доставки...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Button trigger modal for ANAS -->
+            <button type="button" class="btn-as-link" data-bs-toggle="modal" data-bs-target="#anasModal">
+                About us
+            </button>
+            
+            <!-- Modal for ANAS -->
+            <div class="modal fade" id="anasModal" tabindex="-1" aria-labelledby="anasModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="anasModalLabel">About us</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Здесь можно указать информацию ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Button trigger modal for Условия оплаты -->
+            <button type="button" class="btn-as-link" data-bs-toggle="modal" data-bs-target="#paymentModal">
+                Peyment terms
+            </button>
+            
+            <!-- Modal for Условия оплаты -->
+            <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="paymentModalLabel">Peyment terms</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Здесь можно указать условия оплаты...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </nav>
         <div class="footer-content">
             <div class="footer-column footer-column-left">
