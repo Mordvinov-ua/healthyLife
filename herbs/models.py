@@ -50,11 +50,43 @@ class Tovar(models.Model):
             except TovarVariation.DoesNotExist:
                 return None
         return None
+    
+    def duplicate(self):
+        duplicate = Tovar.objects.create(
+            title = self.title,
+            content = self.content,
+            product_benefits= self.product_benefits,
+            ingredients = self.ingredients,
+            usage_instructions = self.usage_instructions,
+            condition_of_product = self.condition_of_product,
+            main_purpose = self.main_purpose,
+            active_ingredients = self.active_ingredients,
+            department = self.department,
+            expiration_date = self.expiration_date,
+            region_of_manufacture = self.region_of_manufacture,
+            photo = self.photo,
+            price = self.price,
+            )
+        # Генерируем уникальный slug
+        new_slug = self.slug
+        counter = 1
+        while Tovar.objects.filter(slug=new_slug).exists():
+            new_slug = f"{self.slug}-{counter}"
+            counter += 1
+
+        # Присваиваем новый slug и сохраняем дубликат
+        duplicate.slug = new_slug
+        duplicate.save()
+
+        return duplicate
+                
 
     class Meta:
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
         ordering = ("id",)
+
+    
 
 class TovarPhoto(models.Model):
     tovar = models.ForeignKey(Tovar, related_name='photos', on_delete=models.CASCADE)
@@ -76,7 +108,7 @@ class TovarVariation(models.Model):
         return self.price - discount_amount
 
     def __str__(self):
-        return f"{self.size} - {self.price} $"
+        return f"{self.size} - {self.price} $ - {self.discount} % "  
 
     class Meta:
         verbose_name = 'Вариант товара'

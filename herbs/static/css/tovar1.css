@@ -131,7 +131,7 @@ button.prev:hover, button.next:hover {
     justify-content: space-around;
     list-style: none;
     padding-right: 1em;
-    font-size: 4vw;
+    font-size: 3vw;
     flex: 1;
     padding-left: 0.1vw;
 }
@@ -147,7 +147,7 @@ button.prev:hover, button.next:hover {
 #price{
     margin-bottom: 0;
     margin-left: 0.1em;
-    font-size: 4vw;
+    font-size: 3vw;
 }
 #econom_info{
     color:rgb(126, 175, 65, 1);
@@ -156,7 +156,7 @@ button.prev:hover, button.next:hover {
     margin-top: -1.1vw;
 }
 .content{
-    font-size: large;
+    font-size: medium;
 }
 .button_buy_korb{
     background-color: rgb(126, 175, 65, 1);
@@ -211,7 +211,7 @@ button.prev:hover, button.next:hover {
 .var_platz{
     margin-top: 1.5em;
     margin-right: 3em;
-    font-size: 1.5vw;
+    font-size: 1.3vw;
 }
 .accordion_platz{
     background-color: rgb(84, 121, 40);

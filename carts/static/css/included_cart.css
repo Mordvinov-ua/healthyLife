@@ -17,3 +17,8 @@
 .col{
     color: rgb(126, 175, 65, 1);
 }
+@media (max-width: 800px) {
+    .number{
+        font-size: smaller;
+    }
+}

@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             var img = document.createElement('img'); // Создаем новый элемент <img> для кнопки
             img.className = 'add_in_korb'; // Устанавливаем класс изображения
-            img.src = '{% static "images/korb_add.png" %}'; // Устанавливаем путь к изображению
+            img.src = "{% static 'images/korb_add.png' %}"; // Устанавливаем путь к изображению
 
             newLink.appendChild(img); // Добавляем изображение в ссылку
             butBuyContainer.appendChild(newLink); // Добавляем кнопку в контейнер
