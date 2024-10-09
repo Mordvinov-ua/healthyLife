@@ -102,22 +102,16 @@
                 <h5 style="color: white;">{{i}}</h5>
                 <ul class="price">
                   {% if i.sale_category.pk == 3 %}
-                    {% with false as stop_loop %}
-                      {% for variation in i.tovar_variations.all %}
-                        {% if not stop_loop %}
-                          {% if variation.price != variation.price_after_discount %}
-                            <li style="color: white;"><s>{{ variation.price }} €</s></li>
-                            <li style="color: rgb(207, 6, 6);"><b>{{ variation.price_after_discount|floatformat:2 }} €</b></li>
-                            {% with true as stop_loop %} 
-                            {% endwith %}
-                          {% endif %}
-                        {% endif %}
-                      {% endfor %}
-                    {% endwith %}
+                    {% for item in discount_items %}
+                      {% if i.id == item.item.id %}
+                        <li style="color: white;"><s>{{ item.discount_variation.price|floatformat:2 }} €</s></li>
+                        <li style="color: rgb(207, 6, 6);"><b>{{ item.price_after_discount|floatformat:2 }} €</b></li>
+                      {% endif %}
+                    {% endfor %}
                   {% else %}
-                    <li style="color: white;"><b>{{i.tovar_variations.first.price}} €</b></li>
+                      <li style="color: white;"><b>{{ i.tovar_variations.first.price }} €</b></li>
                   {% endif %}
-                </ul>
+              </ul>
               </div>
               <div class="but_buy">
                 <a class="button_buy_korb add-to-cart" href="{% url "cart_add" %}" data-product-id="{{ i.id }}" data-variation-id={{ i.tovar_variations.first.id}}>

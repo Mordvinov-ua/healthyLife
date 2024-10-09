@@ -17,7 +17,19 @@ def mainPage(request):
     
     # Фильтруем товары по выбранной категории
     contact_list = Tovar.objects.filter(sale_category=selected_category)
-    
+    # Получаем товары с первой вариацией со скидкой
+    discount_items = []
+    for item in contact_list:
+        first_discount_variation = item.tovar_variations.filter(discount__gt=0).first()  # Находим первую вариацию со скидкой
+        if first_discount_variation:
+            original_price = first_discount_variation.price
+            discount_percentage = first_discount_variation.discount
+            price_after_discount = original_price - (original_price * discount_percentage / 100)
+            discount_items.append({
+                'item': item,
+                'discount_variation': first_discount_variation,
+                'price_after_discount': price_after_discount,
+            })
     # Пагинация - по 4 товару на страницу
     paginator = Paginator(contact_list, 4)
 
@@ -27,6 +39,7 @@ def mainPage(request):
     # Передаем категорию и список товаров в шаблон
     return render(request, 'mainPage.html', {
         'page_obj': page_obj,
+        'discount_items':discount_items,
         'value': selected_category.pk,  # Передаем ID выбранной категории
         'sale_cat': Sale_category.objects.all()  # Передаем все категории
     })
