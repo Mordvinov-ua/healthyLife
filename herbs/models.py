@@ -25,7 +25,7 @@ class Tovar(models.Model):
     sale_category = models.ForeignKey('Sale_category', on_delete=models.PROTECT, null=True, blank=True)
     slug = models.SlugField(max_length=100, db_index=True, unique=True, verbose_name='Url')
     quantity = models.PositiveIntegerField(default=0,)
-    tovar_variations = models.ManyToManyField('TovarVariation', related_name='tovars', blank=True, default=1)
+    tovar_variations = models.ManyToManyField('TovarVariation', related_name='tovars', blank=True)
     
     def __str__(self):
         return self.title
