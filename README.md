@@ -1,4 +1,5 @@
 # Online Store Project
+![](https://github.com/Mordvinov-ua/healthyLife/blob/master/Screenshot.png)
 ## Demo-Website
 Mein Online-Shop ist unter folgendem Link verfügbar: [Demo Online Store](https://healthyshopua.com) 
 ## Projektbeschreibung
