@@ -6,6 +6,6 @@ urlpatterns = [
     path('registration/', registration, name = 'registration'),
     path('profile/', profile, name = 'profile'),
     path('logout/', logout, name = 'logout'),
-
+    path('send-tracking-email/', send_tracking_email, name='send_tracking_email'),
 
 ]

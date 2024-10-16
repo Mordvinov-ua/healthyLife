@@ -1,4 +1,5 @@
-from django.shortcuts import redirect, render
+import logging
+from django.shortcuts import get_object_or_404, redirect, render
 from carts.models import Cart
 from orders.models import Order, OrderItem
 from users.forms import ProfileForm, UserLoginForm, UserRegistrationForm
@@ -7,6 +8,12 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.db.models import Prefetch
+
+from users.models import User
+
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.core.mail import send_mail
 
 
 def login(request):
@@ -96,3 +103,30 @@ def profile(request):
 def logout(request):
     auth.logout(request)
     return redirect(reverse("home"))
+
+
+# Настройка логирования
+logger = logging.getLogger(__name__)
+
+def send_tracking_email(request):
+    tracking_number = request.POST.get('tracking_number')
+    user_id = request.POST.get('user_id')
+
+    if not tracking_number or not user_id:
+        return JsonResponse({'success': False, 'error': 'Не переданы необходимые данные'})
+
+    try:
+        user = get_object_or_404(User, id=user_id)  # Получаем пользователя по ID
+        if user.email:
+            send_mail(
+                'Your tracking number',
+                f'Your tracking number: {tracking_number}',
+                'ukrainehealthy.life@gmail.com',  
+                [user.email],
+                fail_silently=False,
+            )
+            return JsonResponse({'success': True})
+        else:
+            return JsonResponse({'success': False, 'error': 'У пользователя нет email'})
+    except Exception as e:
+        return JsonResponse({'success': False, 'error': str(e)})

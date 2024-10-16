@@ -30,6 +30,9 @@ def mainPage(request):
                 'discount_variation': first_discount_variation,
                 'price_after_discount': price_after_discount,
             })
+            item.variation_id = first_discount_variation.id
+        else:
+            item.variation_id = item.tovar_variations.first.id
     # Пагинация - по 4 товару на страницу
     paginator = Paginator(contact_list, 4)
 
@@ -94,6 +97,25 @@ def search(request,):
         contact_list = q_search(query)
     if order_by:
         contact_list = contact_list.order_by(order_by)
+
+    # Добавляем данные о скидочных вариациях
+    discount_items = []
+    for item in contact_list:
+        first_discount_variation = item.tovar_variations.filter(discount__gt=0).first()
+        if first_discount_variation:
+            original_price = first_discount_variation.price
+            discount_percentage = first_discount_variation.discount
+            price_after_discount = original_price - (original_price * discount_percentage / 100)
+            discount_items.append({
+                'item': item,
+                'discount_variation': first_discount_variation,
+                'price_after_discount': price_after_discount,
+            })
+            # Добавляем ID вариации со скидкой
+            item.variation_id = first_discount_variation.id
+        else:
+            # Если скидки нет, используем первую вариацию
+            item.variation_id = item.tovar_variations.first.id
 
     paginator = Paginator(contact_list, 8)
     page_number = request.GET.get('page', 1)

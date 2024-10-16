@@ -61,3 +61,6 @@ class ProfileForm(UserChangeForm):
     location = forms.CharField()
     email = forms.CharField()
 
+
+class TrackingNumberForm(forms.Form):
+    tracking_number = forms.CharField(max_length=100, required=True, label='Трекинговый номер')

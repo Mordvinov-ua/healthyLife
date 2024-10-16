@@ -1,0 +1,43 @@
+{% extends "admin/base_site.html" %}
+{% block content %}
+<h2>Отправка трекингового номера выбранным пользователям</h2>
+
+<input type="text" id="trackingNumberInput" placeholder="Введите трекинговый номер">
+<input type="hidden" id="userIdInput" value="{{ users.0.id }}">  <!-- Используем ID первого пользователя в выборке -->
+<button id="sendTrackingEmailButton">Отправить трекинговый номер</button>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#sendTrackingEmailButton').click(function() {
+            var trackingNumber = $('#trackingNumberInput').val();
+            var userId = $('#userIdInput').val(); // ID пользователя
+
+            // Очистим поле ввода трекингового номера сразу после нажатия
+            $('#trackingNumberInput').val('');
+
+            $.ajax({
+                type: 'POST',
+                url: '{% url "send_tracking_email" %}',
+                data: {
+                    'tracking_number': trackingNumber,
+                    'user_id': userId,
+                    'csrfmiddlewaretoken': '{{ csrf_token }}',  // CSRF-токен
+                },
+                success: function(response) {
+                    if (response.success) {
+                        alert('Письмо успешно отправлено!');
+                        // Перенаправим обратно на страницу пользователей
+                        window.location.href = '/admin/users/user/';
+                    } else {
+                        alert('Ошибка: ' + response.error);
+                    }
+                },
+                error: function(xhr, textStatus, errorThrown) {
+                    alert('Ошибка при отправке запроса: ' + errorThrown);
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}
