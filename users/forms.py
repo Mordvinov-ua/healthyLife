@@ -48,18 +48,16 @@ class ProfileForm(UserChangeForm):
             "postcode",
             "location",
             "email",
-
         )
-    image = forms.ImageField(required=False)
-    first_name =forms.CharField()
-    last_name =forms.CharField()
-    username =forms.CharField()
-    country_or_region = forms.ModelChoiceField(queryset=LandsUndNumbers.objects.all(), required=True, label='lands_and_numbers')
-    street_and_house_number = forms.CharField()
-    additional_address = forms.CharField()
-    postcode = forms.CharField()
-    location = forms.CharField()
-    email = forms.CharField()
+    image = forms.ImageField(required=False,)
+    country_or_region = forms.ModelChoiceField(queryset=LandsUndNumbers.objects.all(), required=True, label='lands_and_numbers',)
+    first_name =forms.CharField(required=False,)
+    last_name =forms.CharField(required=False,)
+    username =forms.CharField(required=False,)
+    street_and_house_number = forms.CharField(required=False,)
+    postcode = forms.CharField(required=False,)
+    location = forms.CharField(required=False,)
+    email = forms.CharField(required=False,)
 
 
 class TrackingNumberForm(forms.Form):

@@ -24,7 +24,7 @@
                                             alt="Аватар пользователя" class="img-fluid rounded-circle"
                                             style="max-width: 150px;">
                                     {% else %}
-                                    <img src=""
+                                    <img src="{% static 'images/ava.png' %}"
                                         alt="Аватар пользователя" class="img-fluid rounded-circle"
                                         style="max-width: 150px;">
                                     {% endif %}
@@ -35,17 +35,13 @@
                                             <div class="alert alert-danger alert-dismissible fade show">{{form.image.errors}}</div>
                                         {% endif %}
                                 </div>
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="countryDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Choose a country or region
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="countryDropdown">
-                                        {% get_land_and_number as lands_numbers %} 
-                                        {% for lands_object in lands_numbers %}
-                                            <li><a class="dropdown-item country-select" href="#" data-phone-code="{{ lands_object.number_code }}">{{ lands_object.land }}</a></li>
-                                        {% endfor %}
-                                    </ul>
-                                    <input type="text" class="form-control" id="id_country_or_region" value="" name="country_or_region" required>
+                                <div class="form-group">
+                                    <label for="id_country_or_region">Land:</label>
+                                    <br>
+                                    {{ form.country_or_region }}
+                                    {% if form.country_or_region.errors %}
+                                        <div class="alert alert-danger">{{ form.country_or_region.errors }}</div>
+                                    {% endif %}
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="id_first_name" class="form-label">First name:</label>
@@ -115,7 +111,7 @@
                             </div>
                             <button type="submit" class="btn btn-dark">Save</button>
                         </form>
-                        <button onclick="location.href='{% url "logout" %}'" class="btn btn-dark">Exit</button>
+                        <button onclick="location.href='{% url "logout" %}'" class="btn btn-dark mt-3">Exit</button>
                     </div>
                 </div>
                 <!-- Корзина -->

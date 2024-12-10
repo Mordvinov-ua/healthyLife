@@ -32,7 +32,7 @@ def mainPage(request):
             })
             item.variation_id = first_discount_variation.id
         else:
-            item.variation_id = item.tovar_variations.first.id
+            item.variation_id = item.tovar_variations.first().id
     # Пагинация - по 4 товару на страницу
     paginator = Paginator(contact_list, 4)
 
@@ -68,7 +68,13 @@ def sale_cat(request, sale_cat_id):
     return render(request, 'mainPage.html', {'page_obj':page_obj, 'value':sale_cat_id, 'price_after_discount': product.price_after_discount})
 
 def showCat (request, cat_slug):
-    return render (request, 'groupPage.html', {'slug':cat_slug})
+    contact_list = Tovar.objects.all()
+
+    paginator = Paginator(contact_list, 8)
+    page_number = request.GET.get('page', 1)
+    page_obj = paginator.get_page(page_number)
+
+    return render (request, 'groupPage.html', {'slug':cat_slug, 'page_obj':page_obj,})
 
 def priceList (request, priceList_slug):
 
