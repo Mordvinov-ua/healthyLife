@@ -68,7 +68,8 @@ def sale_cat(request, sale_cat_id):
     return render(request, 'mainPage.html', {'page_obj':page_obj, 'value':sale_cat_id, 'price_after_discount': product.price_after_discount})
 
 def showCat (request, cat_slug):
-    contact_list = Tovar.objects.all()
+    category = Category.objects.filter(slug=cat_slug).first()
+    contact_list = Tovar.objects.filter(group__category=category).distinct()
 
     paginator = Paginator(contact_list, 8)
     page_number = request.GET.get('page', 1)

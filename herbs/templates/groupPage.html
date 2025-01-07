@@ -30,8 +30,6 @@
         
         <div class="tovar_platz">
             {% for t in page_obj %}
-            {% for group_obj in t.group.all|unique_categories %}
-            {% if group_obj.category|lower == slug %}
             <a class="a_group_cart" href="{% url 'tovar' t.slug %}">
                 <div class="tovarCart">
                     <img class="tovarCartImg" src="{{t.photo.url}}">
@@ -56,8 +54,6 @@
                       </div>
                 </div>
             </a>
-            {% endif %}
-            {% endfor %}
             {% endfor %}
             
         </div>
